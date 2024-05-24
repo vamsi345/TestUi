@@ -1,0 +1,280 @@
+﻿@page "/assets"
+
+@using SchullerCo.Collab.Dash.Models.CustomIcons
+@using SchullerCo.Collab.Dash.SvgIcons
+@using System.Threading.Tasks
+@using System.Collections.Generic
+@using SchullerCo.Collab.Dash.Services
+
+@inject HttpClient Http
+
+<PageTitle>Assets</PageTitle>
+
+<MudContainer Class="mt-16 d-flex" MaxWidth="MaxWidth.False">
+    <MudGrid>
+
+        <MudSplitter OnDoubleClicked="@OnDoubleClicked"
+                     @bind-Dimension="@_percentage">
+            <StartContent>
+                @*    <MudItem Class="my-8 mr-3">
+
+                </MudItem> *@
+                <div>
+                    <div c>
+
+                    </div>
+                    <!-- Erste Zeile mit den Buttons -->
+                    <div>
+                        <MudButton Class="mr-3" StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.Refresh)" Color="Color.Primary">REFRESH</MudButton>
+                        <MudButton Class="mr-3" StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.QrCode)" Color="Color.Primary">QRCODE</MudButton>
+                    </div>
+                    <!-- Zweite Zeile mit dem MudText -->
+                    <div class="row mt-4">
+                        <MudPaper Width="700px">
+                            @if (!string.IsNullOrEmpty(errorMessage))
+                            {
+                                <MudText Color="Color.Error">@errorMessage</MudText>
+                            }
+                            else if (assetDtos != null && assetDtos.Any())
+                            {
+                                <MudList Clickable="true">
+                                    <MudListSubheader>
+                                        Liste Name
+                                    </MudListSubheader>
+                                    @foreach (AssetDto assetDto in assetDtos)
+                                    {
+                                        <MudListItem OnClick="() => OnClickAsset(assetDto.Id)" Icon="@Icons.Material.Filled.List" InitiallyExpanded="true">
+                                            <MudText >@assetDto.Name</MudText>
+                                        </MudListItem>
+                                        @*   <MudText Color="Color.Dark">@assetDto.Name</MudText>
+                                <MudText Color="Color.Dark">@assetDto.Description</MudText>
+                                <MudText Color="Color.Dark">@assetDto.Uuid</MudText> *@
+                                    }
+                                </MudList>
+                            }
+                            else
+                            {
+                                <MudText Color="Color.Dark">Keine Daten verfügbar</MudText>
+                            }
+                        </MudPaper>
+
+                    </div>
+                </div>
+
+                @*   <MudItem>
+
+                </MudItem> *@
+            </StartContent>
+
+            <EndContent>
+                <MudItem>
+                    <!-- Second column for the menu with tabs -->
+                    <MudTabs PanelClass="mt-6" Elevation="1" Rounded="true" Class="my-6  mx-3" Color="Color.Default">
+                        <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.ModelViewer)" Text="3D VIEWER">
+
+                        </MudTabPanel>
+                        <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.DataBase)" Text="DATA">
+                            <MudTabs Rounded="true">
+
+                                <MudTabPanel>
+                                    <ChildContent>
+                                        <MudText>Custom tab content only</MudText>
+                                    </ChildContent>
+                                    <TabWrapperContent>
+                                        <MudTooltip Text="ToolTip Two">
+                                            @context
+                                        </MudTooltip>
+                                    </TabWrapperContent>
+                                    <TabContent>
+                                        <MudText Typo="Typo.button">AVEVA DATA</MudText>
+                                    </TabContent>
+                                </MudTabPanel>
+
+                                <MudTabPanel>
+                                    <ChildContent>
+                                        <MudText>Both custom tab and wrapper content</MudText>
+                                    </ChildContent>
+                                    <TabWrapperContent>
+                                        <MudTooltip Text="ToolTip Two">
+                                            @context
+                                        </MudTooltip>
+                                    </TabWrapperContent>
+                                    <TabContent>
+                                        <MudText Typo="Typo.button">SPECKLE DATA</MudText>
+                                    </TabContent>
+
+                                </MudTabPanel>
+                            </MudTabs>
+                        </MudTabPanel>
+
+                        <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Documents)" Text="DOCUMENTS">
+                            <MudGrid Class="mt-2">
+                                <MudItem xs="12" Class="d-flex justify-end">
+                                    <MudFileUpload T="IBrowserFile" FilesChanged="UploadFiles">
+                                        <ButtonTemplate>
+                                            <MudButton HtmlTag="label"
+                                                       Color="Color.Primary"
+                                                       StartIcon="@Icons.Material.Filled.CloudUpload"
+                                                       for="@context.Id">
+                                                Upload Files
+                                            </MudButton>
+                                        </ButtonTemplate>
+                                    </MudFileUpload>
+                                </MudItem>
+                            </MudGrid>
+                        </MudTabPanel>
+
+                        <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Forms)" Text="FORMS">
+
+                        </MudTabPanel>
+                    </MudTabs>
+                </MudItem>
+            </EndContent>
+        </MudSplitter>
+
+    </MudGrid>
+</MudContainer>
+
+
+@code {
+    string errorMessage = string.Empty;
+    ICollection<AssetDto> assetDtos = null;
+    AssetDto assetDto = null;
+    bool hasChildren = false;
+    // GET Assets
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (assetDtos != null)
+        {
+            assetDtos.Clear();
+        }
+        else assetDtos = new List<AssetDto>();
+        await GetAssetByIdAsync(1);
+        assetDtos.Add(assetDto);
+    }
+
+    protected async Task OnClickAsset(int id)
+    {
+        await GetAssetChildren(id);
+    }
+
+
+    private async Task GetAssets()
+    {
+        try
+        {
+            assetDtos = await ApiClientService.GetAssets();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
+            if (ex.InnerException != null)
+            {
+                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
+            }
+        }
+    }
+
+    private async Task GetAssetByIdAsync(int id)
+    {
+        try
+        {
+            assetDto = await ApiClientService.GetAsset(id);
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
+            if (ex.InnerException != null)
+            {
+                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
+            }
+        }
+    }
+
+    private async Task GetAssetChildren(int id)
+    {
+        try
+        {
+            List<AssetDto> result = (List<AssetDto>)await ApiClientService.GetChildren(id);
+            if (result != null && result.Count != 0)
+            {
+                assetDtos = await ApiClientService.GetChildren(id);
+                StateHasChanged();
+            }
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
+            if (ex.InnerException != null)
+            {
+                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
+            }
+        }
+    }
+
+    private async Task HasChildren(int id)
+    {
+        List<AssetDto> result = (List<AssetDto>)await ApiClientService.GetChildren(id);
+        if (result != null && result.Count != 0)
+        {
+            hasChildren = false;
+        }
+        else
+        {
+            hasChildren = true;
+        }
+    }
+
+    
+
+
+
+    double _percentage = 50;
+
+    private Task OnDoubleClicked()
+    {
+        if (true)
+        {
+            _percentage = 50;
+        }
+
+        return Task.CompletedTask;
+    }
+
+
+    IList<IBrowserFile> files = new List<IBrowserFile>();
+    private void UploadFiles(IBrowserFile file)
+    {
+        files.Add(file);
+        //TODO upload the files to the server
+    }
+}
+
+
+<style>
+    .mud-tabs .mud-tab.mud-tab-active {
+        color: #295093 !important; /* Textfarbe des aktiven Tabs */
+        background-color: rgba(128, 128, 128, 0.2) !important; /* Hintergrundfarbe des aktiven Tabs */
+    }
+
+    .mud-tabs .mud-tab:hover {
+        color: #295093 !important; /* Textfarbe des Tabs beim Hover */
+        background-color: rgba(128, 128, 128, 0.2) /* Hintergrundfarbe des Tabs beim Hover */
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .mt-4 {
+        margin-top: 1.5rem; /* 24px, kannst du je nach Bedarf anpassen */
+    }
+</style>
+

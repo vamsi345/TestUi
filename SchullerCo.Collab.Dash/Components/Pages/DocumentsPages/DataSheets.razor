@@ -1,0 +1,43 @@
+﻿@page "/documents/datasheets"
+
+@using SchullerCo.Collab.Dash.Models.CustomIcons
+@using System.Net.Http.Json
+@using MudExtensions
+
+@inject NavigationManager NavigationManager
+
+<PageTitle>Data Sheets</PageTitle>
+
+<MudContainer Class="mt-16" MaxWidth="MaxWidth.Large">
+   @*  Justify="Justify.FlexStart" Spacing="2" *@
+    <MudGrid Spacing="5">
+        <MudItem Class="col-6" xs="12">
+            <MudText Typo="Typo.h4" GutterBottom="true">Data Sheets</MudText>
+        </MudItem>
+
+        <MudItem xs="12" Class="d-flex justify-end">
+            <MudFileUpload T="IBrowserFile" FilesChanged="UploadFiles">
+                <ButtonTemplate>
+                    <MudButton HtmlTag="label"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Material.Filled.CloudUpload"
+                               for="@context.Id">
+                        UPLOAD FILES
+                    </MudButton>
+                </ButtonTemplate>
+            </MudFileUpload>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+
+@code {
+
+    IList<IBrowserFile> files = new List<IBrowserFile>();
+    private void UploadFiles(IBrowserFile file)
+    {
+        files.Add(file);
+        //TODO upload the files to the server
+    }
+}
+

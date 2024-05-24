@@ -1,0 +1,149 @@
+﻿@page "/"
+
+@using SchullerCo.Collab.Dash.Models
+@using SchullerCo.Collab.Dash.Models.CustomIcons
+@using SchullerCo.Collab.Dash.SvgIcons
+
+@inject NavigationManager NavigationManager
+
+<PageTitle>Home</PageTitle>
+
+<MudContainer Class="mt-16" MaxWidth="MaxWidth.Large">
+    <MudGrid Justify="Justify.FlexStart" Spacing="5">
+        <MudItem xs="12">
+            <MudText Typo="Typo.h4" GutterBottom="true">Home</MudText>
+        </MudItem>
+
+        <!-- Iterate through the list of MudPaper -->
+        @foreach (var item in paperItems)
+        {
+            <MudItem xs="12" sm="6" md="3" lg="3">
+
+                <!-- Set up a MudItem for each MudPaper -->
+                <MudPaper Elevation="2" Class="align-self-auto p-3 myclassName"
+                          Height="215px" Width="290px" Style="width: 100%; cursor: pointer;"
+                          @onclick="() => NavigateToPage(item.PageUrl)">
+
+                    <!-- MudIcon top right -->
+                    <MudItem xs="12" Class="d-flex justify-end mb-1">
+                        <MudToggleIconButton Disabled="false"
+                                             Icon="@Icons.Material.Filled.StarBorder"
+                                             Color="@Color.Dark"
+                                             ToggledIcon="@Icons.Material.Filled.Star"
+                                             ToggledColor="@Color.Success" ToggledTitle="On">
+                        </MudToggleIconButton>
+                    </MudItem>
+
+                    <!-- Loop for each CardSvg in item.cardSvgs -->
+                    @if (item.PaperSvgs != null && item.PaperSvgs.Any())
+                    {
+                        @foreach (var cardSvg in item.PaperSvgs)
+                        {
+                            <!-- MudIcon in the centre left -->
+                            <MudItem xs="12">
+                                <MudIcon Class="d-flex justify-right"
+                                         Style="@($"height: 55px; width: 55px;")"
+                                         Icon="@cardSvg.ViewInAr">
+                                </MudIcon>
+                            </MudItem>
+                        }
+                    }
+
+                    <!-- Text in the centre below -->
+                    <MudItem Class="mt-1">
+                        <MudText Typo="Typo.subtitle2"
+                                 Class="text-left">
+                            @item.Description
+                        </MudText>
+                    </MudItem>
+                </MudPaper>
+            </MudItem>
+        }
+    </MudGrid>
+</MudContainer>
+
+
+@code {
+
+    List<PaperItem> paperItems = new List<PaperItem>()
+    {
+        new PaperItem
+        {
+             Description = "3D Viewer to navigate through 3D Model",
+             PaperSvgs = new List<PaperSvg>
+             {
+                new PaperSvg {
+                    ViewInAr = SvgIconHelper.GetSvgIcon(SvgLib.ModelViewer),
+                }
+             },
+             PageUrl = "/3dviewer",
+
+        },
+         new PaperItem
+        {
+             Description = "Asset Data at your fingertips",
+             PaperSvgs = new List<PaperSvg>
+             {
+                new PaperSvg {
+                    ViewInAr = SvgIconHelper.GetSvgIcon(SvgLib.Assets),
+                }
+             },
+             PageUrl = "/assets",
+
+        },
+          new PaperItem
+        {
+             Description = "Overview of all Plant/Project Documents",
+             PaperSvgs = new List<PaperSvg>
+             {
+                new PaperSvg {
+                    ViewInAr = SvgIconHelper.GetSvgIcon(SvgLib.Documents),
+                }
+             },
+             PageUrl = "/documents",
+
+        },
+          new PaperItem
+        {
+             Description = "Overview of all Plant/Project Forms",
+             PaperSvgs = new List<PaperSvg>
+             {
+                new PaperSvg {
+                    ViewInAr = SvgIconHelper.GetSvgIcon(SvgLib.Forms),
+                }
+             },
+             PageUrl = "/forms",
+        },
+          new PaperItem
+        {
+            Description = "Overview of all Plant/Project Statistics",
+             PaperSvgs = new List<PaperSvg>
+             {
+                new PaperSvg {
+                    ViewInAr = SvgIconHelper.GetSvgIcon(SvgLib.Statistics),
+                }
+             },
+             PageUrl = "/statistics",
+        }
+    };
+
+    private void NavigateToPage(string pageUrl)
+    {
+        // Navigation to the specified page is executed here
+        NavigationManager.NavigateTo(pageUrl);
+    }
+
+}
+
+<style>
+    .myclassName:hover {
+        background-color: rgba(128, 128, 128, 0.2) !important;
+    }
+
+        .myclassName:hover .mud-svg-icon {
+            color: #295093 !important;
+            fill: #295093 !important;
+        }
+</style>
+
+  @*<div class="d-sm-none d-xs-none d-md-block d-lg-block d-xl-block"><h1>Home</h1></div> *@

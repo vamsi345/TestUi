@@ -1,0 +1,74 @@
+﻿@using SchullerCo.Collab.Dash.SvgIcons
+
+
+<MudNavMenu Bordered="true" Class="mud-nav-menu myclassName:hover">
+    <MudNavLink Href="/" Match="NavLinkMatch.All">
+        <div class="container d-flex align-center ">
+            <MudIcon Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Home)" Size="Size.Large">  </MudIcon>
+            <MudText Class="ml-3 ">Home </MudText>
+        </div>
+    </MudNavLink>
+    @* Icons.Material.Filled.Home *@
+    <MudNavLink Href="/3dviewer" Match="NavLinkMatch.Prefix">
+        <div class="container d-flex align-center ">
+            <MudIcon Icon="@SvgIconHelper.GetSvgIcon(SvgLib.ModelViewer)" Size="Size.Large">  </MudIcon>
+            <MudText Class="ml-3 ">3D Viewer </MudText>
+        </div>
+    </MudNavLink>
+
+    <MudNavLink Href="/Assets" Match="NavLinkMatch.Prefix">
+        <div class="container d-flex align-center ">
+            <MudIcon Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Assets)" Size="Size.Large">  </MudIcon>
+            <MudText Class="ml-3 ">Assets </MudText>
+        </div>
+    </MudNavLink>
+
+    <MudNavLink Href="/documents" Match="NavLinkMatch.Prefix">
+        <div class="container d-flex align-center ">
+            <MudIcon Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Documents)" Size="Size.Large">  </MudIcon>
+            <MudText Class="ml-3 ">Documents </MudText>
+        </div>
+    </MudNavLink>
+
+    <MudNavLink Href="/forms" Match="NavLinkMatch.Prefix" Disabled="true">
+        <div class="container d-flex align-center ">
+            <MudIcon Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Forms)" Size="Size.Large">  </MudIcon>
+            <MudText Class="ml-3 ">Forms </MudText>
+        </div>
+    </MudNavLink>
+
+    <MudNavLink Href="/statistics" Match="NavLinkMatch.Prefix" Disabled="true">
+        <div class="container d-flex align-center ">
+            <MudIcon Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Statistics)" Size="Size.Large">  </MudIcon>
+            <MudText Class="ml-3 ">Statistics </MudText>
+        </div>
+    </MudNavLink>
+
+
+   @*  <MudNavLink Href="/counter" Match="NavLinkMatch.Prefix">Counter</MudNavLink>
+    <MudNavLink Href="/weather" Match="NavLinkMatch.Prefix">Weater</MudNavLink> *@
+</MudNavMenu>
+
+
+@code{
+   
+
+}
+
+
+<style>
+    /* Entfernt das Unterstreichen von Links in einem MudNavMenu */
+    .mud-nav-menu a {
+        text-decoration: none;
+    }
+
+    .mud-nav-menu .mud-nav-link:hover {
+        color: #295093 !important; /* Links auf weiße Farbe setzen */
+        background-color: rgba(128, 128, 128, 0.2) !important;
+    }
+
+    .mud-nav-menu .mud-nav-link.active {
+        color: #295093 !important; /* Textfarbe der aktiven Links */
+        background-color: rgba(128, 128, 128, 0.2) !important; /* Hintergrundfarbe der aktiven Links */
+    }
+</style>
