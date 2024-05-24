@@ -1,0 +1,133 @@
+﻿@page "/documents"
+
+@using SchullerCo.Collab.Dash.Models
+@using SchullerCo.Collab.Dash.Models.CustomIcons
+@using SchullerCo.Collab.Dash.SvgIcons
+
+@inject NavigationManager NavigationManager
+
+<PageTitle>Documents</PageTitle>
+
+<MudContainer Class="mt-16" MaxWidth="MaxWidth.Large">
+
+    <MudGrid Justify="Justify.FlexStart" Spacing="5">
+        <MudItem xs="12">
+            <MudText Typo="Typo.h4" GutterBottom="true">Documents</MudText>
+        </MudItem>
+
+        <!-- Iterate through the list of MudPaper -->
+        @foreach (var item in paperItems)
+        {
+            <MudItem xs="12" sm="6" md="3" lg="3">
+
+                <!-- Set up a MudItem for each MudPaper -->
+                <MudPaper MudPaper Elevation="2" Class="align-self-auto p-3 myclassName" Height="215px" Width="290px" Style="width: 100%; cursor: pointer;"
+                          @onclick="() => NavigateToPage(item.PageUrl)">
+                    <!-- MudIcon top right -->
+                    <MudItem xs="12" Class="d-flex justify-end mb-2">
+                        <MudToggleIconButton Disabled="false" Icon="@Icons.Material.Filled.StarBorder" Color="@Color.Dark"
+                                             ToggledIcon="@Icons.Material.Filled.Star"
+                                             ToggledColor="@Color.Success" ToggledTitle="On"> </MudToggleIconButton>
+                    </MudItem>
+                    <!-- Loop for each CardSvg in item.cardSvgs -->
+                    @if (item.PaperSvgs != null && item.PaperSvgs.Any())
+                    {
+                        @foreach (var cardSvg in item.PaperSvgs)
+                        {
+                            <!-- MudIcon in the centre left -->
+                            <MudItem xs="12">
+                                <MudIcon Size="Size.Large" Style="height: 55px; width: 55px;" Icon="@cardSvg.ViewInAr">
+                                </MudIcon>
+                            </MudItem>
+
+                            <MudItem xs="12" Class="mt-1">
+                                <MudText Typo="Typo.subtitle2" Align="Align.Left" Class="text-left">
+                                    @item.Name
+                                </MudText>
+                            </MudItem>
+                        }
+                    }@* Style="font-size: 20px" *@
+                    <!-- Text in the centre below -->
+                    @* <MudItem Class="mt-1">
+                        <MudText Typo="Typo.subtitle2" Style="" Class="text-left">
+                            @item.Description
+                        </MudText>
+                    </MudItem> *@
+                </MudPaper>
+            </MudItem>
+        }
+    </MudGrid>
+</MudContainer>
+
+
+@code {
+
+    List<PaperItem> paperItems = new List<PaperItem>()
+    {
+        new PaperItem
+        {
+             Description = "Infos.....",
+             PaperSvgs = new List<PaperSvg>
+             {
+                new PaperSvg {
+                    ViewInAr = SvgIconHelper.GetSvgIcon(SvgLib.DataBase),
+                }
+             },
+             PageUrl = "/documents/datasheets",
+             Name = "Data Sheets",
+        },
+         new PaperItem
+        {
+             Description = "Infos.....",
+             PaperSvgs = new List<PaperSvg>
+             {
+                new PaperSvg {
+                    ViewInAr = SvgIconHelper.GetSvgIcon(SvgLib.Drawings),
+                }
+             },
+             PageUrl = "/documents/drawings",
+             Name = "Drawings",
+        },
+          new PaperItem
+        {
+             Description = "Infos.....",
+             PaperSvgs = new List<PaperSvg>
+             {
+                new PaperSvg {
+                    ViewInAr = SvgIconHelper.GetSvgIcon(SvgLib.Lists),
+                }
+             },
+             PageUrl = "/documents/lists",
+             Name = "Lists",
+        },
+          new PaperItem
+        {
+             Description = "Infos.....",
+             PaperSvgs = new List<PaperSvg>
+             {
+                new PaperSvg {
+                    ViewInAr = SvgIconHelper.GetSvgIcon(SvgLib.Reports),
+                }
+             },
+             PageUrl = "/documents/reports",
+             Name = "Reports",
+        },
+    };
+
+    private void NavigateToPage(string pageUrl)
+    {
+        // Navigation to the specified page is executed here
+        NavigationManager.NavigateTo(pageUrl);
+    }
+}
+
+<style>
+    .myclassName:hover {
+        background-color: rgba(128, 128, 128, 0.2) !important;
+    }
+
+        .myclassName:hover .mud-svg-icon {
+            color: #295093 !important;
+            fill: #295093 !important;
+        }
+</style>

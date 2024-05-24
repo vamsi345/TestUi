@@ -1,0 +1,125 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Style="@($"background:{Colors.Shades.White};")" Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Dark"
+                       Size="Size.Medium"
+                       Edge="Edge.Start"
+                       Class="mr-3"
+                       OnClick="DrawerToggleLeft">
+        </MudIconButton>
+        @* Typo="Typo.h6" *@
+        <MudText Color=Color.Dark Class="d-flex align-content-center"
+                 Style="font-weight:900">SC Dash 2024</MudText>
+
+        <MudSpacer />
+        <!-- Search field large desktop only -->
+        <MudHidden Breakpoint="Breakpoint.Sm">
+            <MudHidden Breakpoint="Breakpoint.Xs">
+                <MudTextField Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Search"
+                              Immediate="true" Placeholder="Search"
+                              IconSize="Size.Medium"
+                              Style="@($"background:{Colors.Grey.Lighten3}; width: 100%; max-width:350px; align-self:center; border:none;")"
+                              @bind-Value="searchString"
+                              Variant="Variant.Outlined" Margin="Margin.Dense">
+                </MudTextField>
+            </MudHidden>
+        </MudHidden>
+
+        <!-- Search field small desktop only -->
+        <MudHidden Breakpoint="Breakpoint.Md">
+            <MudHidden Breakpoint="Breakpoint.Lg">
+                <MudHidden Breakpoint="Breakpoint.Xl">
+                    <MudHidden Breakpoint="Breakpoint.Xxl">
+                        <MudMenu Icon="@Icons.Material.Filled.Search">
+                            <MudTextField Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Search"
+                                          Immediate="true" Placeholder="Search"
+                                          IconSize="Size.Medium"
+                                          Style="width: 100%; max-width:350px; align-self:center"
+                                          @bind-Value="searchString"
+                                          Variant="Variant.Outlined" Margin="Margin.Dense">
+                            </MudTextField>
+                        </MudMenu>
+                    </MudHidden>
+                </MudHidden>
+            </MudHidden>
+        </MudHidden>
+
+        <!-- Menü right -->
+        <MudMenu Color="Color.Dark" Icon="@Icons.Material.Filled.MoreVert">
+            <MudMenuItem>Profile</MudMenuItem>
+            <MudMenuItem Icon="@Icons.Material.Outlined.AccountCircle">My account</MudMenuItem>
+            <MudMenuItem Icon="@Icons.Material.Filled.HelpOutline">Help</MudMenuItem>
+            <MudMenuItem Icon="@Icons.Material.Outlined.Settings">Setting</MudMenuItem>
+            <MudMenuItem Icon="@Icons.Material.Filled.Logout">Logout</MudMenuItem>
+        </MudMenu>
+    </MudAppBar>
+
+    <MudGrid>
+        <MudItem>
+            <!-- MudDrawer left -->
+            <MudDrawer @bind-Open="@_drawerOpenLeft" Elevation="2">
+                <MudDrawerHeader>
+                    <div class="col container d-flex align-center ml-2">
+                        <MudImage Src="images\SC_Logo_Web_2023.jpg" Width="130" Height="40" Alt="Schuller&Company Logo"></MudImage>
+                    </div>
+                </MudDrawerHeader>
+
+                <MudDrawerContainer>
+                    <NavMenu />
+                </MudDrawerContainer>
+            </MudDrawer>
+        </MudItem>
+    </MudGrid>
+
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+
+<!-- MudDrawer left -->
+@code {
+    string searchString = "";
+
+    bool _drawerOpenLeft = true;
+
+    void DrawerToggleLeft()
+    {
+        _drawerOpenLeft = !_drawerOpenLeft;
+    }
+
+}
+
+@code {
+
+    private bool IsSearchVisible = false;
+    private string SearchValue = "";
+
+    private void ToggleSearchField()
+    {
+        IsSearchVisible = !IsSearchVisible;
+    }
+}
+<style>
+    .font-bold {
+        font-weight: bold;
+    }
+
+    .font-semibold {
+        font-weight: 600;
+    }
+</style>
+
+
+
+@* <MudText Style="@($"color:{Colors.Shades.Black};font-family: aktiv-grotesk-extende; font-weight: bold;")" Class="google-font"> SC Dash 2024 </MudText> *@
+@* Style="@($"color:{Colors.Shades.Black};")" *@
+@* <div class="d-sm-none d-xs-none d-md-block d-lg-block d-xl-block"> </div> *@
