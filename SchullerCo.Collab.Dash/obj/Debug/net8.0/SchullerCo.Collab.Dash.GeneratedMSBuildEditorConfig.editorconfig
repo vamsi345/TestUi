@@ -9,83 +9,83 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SchullerCo.Collab.Dash
 build_property.RootNamespace = SchullerCo.Collab.Dash
-build_property.ProjectDir = C:\Users\CyrilTehgnoYoumto\source\repos\SchullerCo-Collab-Dash\SchullerCo.Collab.Dash\
+build_property.ProjectDir = C:\Users\daniel.matheisel\Source\Repos\SchullerCo-Collab-Dash\SchullerCo.Collab.Dash\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\CyrilTehgnoYoumto\source\repos\SchullerCo-Collab-Dash\SchullerCo.Collab.Dash
+build_property.MSBuildProjectDirectory = C:\Users\daniel.matheisel\Source\Repos\SchullerCo-Collab-Dash\SchullerCo.Collab.Dash
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/App.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/3D Viewer.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/3D Viewer.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1wzRCBWaWV3ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Assets.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Assets.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBc3NldHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Counter.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Documents.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Documents.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEb2N1bWVudHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/DocumentsPages/DataSheets.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/DocumentsPages/DataSheets.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEb2N1bWVudHNQYWdlc1xEYXRhU2hlZXRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/DocumentsPages/Drawings.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/DocumentsPages/Drawings.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEb2N1bWVudHNQYWdlc1xEcmF3aW5ncy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/DocumentsPages/Lists.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/DocumentsPages/Lists.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEb2N1bWVudHNQYWdlc1xMaXN0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/DocumentsPages/Reports.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/DocumentsPages/Reports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEb2N1bWVudHNQYWdlc1xSZXBvcnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Error.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Forms.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Forms.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGb3Jtcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Home.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Statistics.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Statistics.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGF0aXN0aWNzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Weather.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Routes.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/_Imports.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Layout/MainLayout.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-sufl650rfg
 
-[C:/Users/CyrilTehgnoYoumto/source/repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Layout/NavMenu.razor]
+[C:/Users/daniel.matheisel/Source/Repos/SchullerCo-Collab-Dash/SchullerCo.Collab.Dash/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-3ezueagnxd
