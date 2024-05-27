@@ -365,5 +365,29 @@ FodyWeavers.xsd
 #Migrations
 Migrations/
 
+#Bin
+bin/
+
+#Obj
+obj/
+
+#Debug
+Debug/
+
+#User file
+SchullerCo.Collab.Dash.csproj.user
+
 # Ignore appsettings.json
 appsettings.json
+/SchullerCo.Collab.Dash/obj/Debug/net8.0/apphost.exe
+/SchullerCo.Collab.Dash/obj/Debug/net8.0/project.razor.vs.bin
+/SchullerCo.Collab.Dash/obj/Debug/net8.0/SchullerCo.Collab.Dash.AssemblyInfo.cs
+/SchullerCo.Collab.Dash/obj/Debug/net8.0/SchullerCo.Collab.Dash.assets.cache
+/SchullerCo.Collab.Dash/obj/Debug/net8.0/SchullerCo.Collab.Dash.AssemblyInfoInputs.cache
+/SchullerCo.Collab.Dash/obj/Debug/net8.0/SchullerCo.Collab.Dash.csproj.CoreCompileInputs.cache
+/SchullerCo.Collab.Dash/obj/Debug/net8.0/SchullerCo.Collab.Dash.csproj.AssemblyReference.cache
+/SchullerCo.Collab.Dash/obj/Debug/net8.0/SchullerCo.Collab.Dash.GeneratedMSBuildEditorConfig.editorconfig
+/SchullerCo.Collab.Dash/obj/project.assets.json
+/SchullerCo.Collab.Dash/obj/project.nuget.cache
+/SchullerCo.Collab.Dash/obj/SchullerCo.Collab.Dash.csproj.nuget.g.props
+/SchullerCo.Collab.Dash/obj/SchullerCo.Collab.Dash.csproj.nuget.dgspec.json
