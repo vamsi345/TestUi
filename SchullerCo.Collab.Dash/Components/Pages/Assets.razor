@@ -13,86 +13,95 @@
 <PageTitle>Assets</PageTitle>
 
 <MudContainer Class="mt-16 d-flex" MaxWidth="MaxWidth.False">
-    <MudGrid>
+    <MudGrid Class="d-flex justify-start">
+
+        <MudItem Class="" xs="12">
+            <MudText Typo="Typo.h4" GutterBottom="true">Assets</MudText>
+            <MudText Typo="Typo.subtitle2">@currentPath</MudText>
+        </MudItem>
         <MudSplitter OnDoubleClicked="@OnDoubleClicked"
                      @bind-Dimension="@_percentage">
             <StartContent>
-                <div class="row" style="height:100%; width: 100%; padding: 16px; margin: 0;">
-                    <div>
-                        <MudText Typo="Typo.subtitle2">@currentPath</MudText>   
-                        <br />
-                    </div
+                <MudPaper  Elevation="0" Class="pa" Style=" width: 100%;">
+
+                    @* <div class="row" style="height:100%; width: 100%; padding: 10px; margin: 0;"><div> *@
+
+                    @* <MudText Typo="Typo.subtitle2">@currentPath</MudText> *@
+
                     <!-- Erste Zeile mit den Buttons -->
-                    <div class="col-12">
-                        <MudButton Variant="Variant.Filled" DisableElevation="true" StartIcon="@Icons.Material.Filled.ArrowBack" 
-                        OnClick="@OnUpCLick" Color="Color.Primary">
-                        GO BACK
-                    </MudButton>
-                        <MudButton Variant="Variant.Filled" Disabled="true" DisableElevation="true" 
-                        StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.QrCode)" Color="Color.Primary">
-                        QRCODE
-                    </MudButton>
-                    </div>
+                    <MudGrid>
+                        <MudItem>
+                            <MudButton Variant="Variant.Filled" DisableElevation="true" StartIcon="@Icons.Material.Filled.ArrowBack"
+                                       OnClick="@OnUpCLick" Color="Color.Primary">
+                                GO BACK
+                            </MudButton>
+                            <MudButton Variant="Variant.Filled" Disabled="true" DisableElevation="true"
+                                       StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.QrCode)" Color="Color.Primary">
+                                QRCODE
+                            </MudButton>
+                        </MudItem>
+                    </MudGrid>
+
                     <!-- Zweite Zeile mit dem MudText -->
-                    <div>
-                        @if (!string.IsNullOrEmpty(errorMessage))
-                        {
-                            <MudText Color="Color.Error">@errorMessage</MudText>
-                        }
-                        else if (assetDtoExtension.AssetDtos != null && assetDtoExtension.AssetDtos.Any())
-                        {
-                            <MudTable Items=@assetDtoExtension.AssetDtos Hover="true" Striped="true"
-                                      RowClass="cursor-pointer" T="AssetDto"
-                                      OnRowClick="OnRowClick" Filter="new Func<AssetDto,bool>(FilterFunc1)">
-                                <ToolBarContent>
-                                    <MudSpacer />
-                                    <div>
-                                        <MudTextField @bind-Value="searchString" Placeholder="Search"
-                                                      Variant="Variant.Outlined" Margin="Margin.Dense"
-                                                      Adornment="Adornment.Start"
-                                                      AdornmentIcon="@Icons.Material.Filled.Search"
-                                                      IconSize="Size.Medium" Class="mt-0" 
-                                                      Style="@($"background:{Colors.Grey.Lighten3};")">
-                                        </MudTextField>
-                                    </div>
-                                </ToolBarContent>
-                                <HeaderContent>
-                                    <MudTh>
-                                        <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Id)">
-                                            Id
-                                        </MudTableSortLabel>
-                                    </MudTh>
-                                    <MudTh>
-                                        <MudTableSortLabel InitialDirection="SortDirection.Ascending"
-                                                           SortBy="new Func<AssetDto, object>(x=>x.Name)">
-                                            Name
-                                        </MudTableSortLabel>
-                                    </MudTh>
-                                    <MudTh>
-                                        <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Description)">
-                                            Description
-                                        </MudTableSortLabel>
-                                    </MudTh>
-                                </HeaderContent>
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <MudText Color="Color.Error">@errorMessage</MudText>
+                    }
+                    else if (assetDtoExtension.AssetDtos != null && assetDtoExtension.AssetDtos.Any())
+                    {
+                        <MudTable Items=@assetDtoExtension.AssetDtos Hover="true" Striped="true"
+                                  RowClass="cursor-pointer" T="AssetDto"
+                                  OnRowClick="OnRowClick" Filter="new Func<AssetDto,bool>(FilterFunc1)">
+                            <ToolBarContent>
+                                <MudSpacer />
+                                <div>
+                                    <MudTextField @bind-Value="searchString" Placeholder="Search"
+                                                  Variant="Variant.Outlined" Margin="Margin.Dense"
+                                                  Adornment="Adornment.Start"
+                                                  AdornmentIcon="@Icons.Material.Filled.Search"
+                                                  IconSize="Size.Medium" Class="mt-0"
+                                                  Style="@($"background:{Colors.Grey.Lighten3};")">
+                                    </MudTextField>
+                                </div>
+                            </ToolBarContent>
+                            <HeaderContent>
+                                <MudTh>
+                                    <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Id)">
+                                        Id
+                                    </MudTableSortLabel>
+                                </MudTh>
+                                <MudTh>
+                                    <MudTableSortLabel InitialDirection="SortDirection.Ascending"
+                                                       SortBy="new Func<AssetDto, object>(x=>x.Name)">
+                                        Name
+                                    </MudTableSortLabel>
+                                </MudTh>
+                                <MudTh>
+                                    <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Description)">
+                                        Description
+                                    </MudTableSortLabel>
+                                </MudTh>
+                            </HeaderContent>
 
-                                <RowTemplate>
-                                    <MudTd DataLabel="Id">@context.Id
-                                    </MudTd>
-                                    <MudTd DataLabel="Name">@context.Name</MudTd>
-                                    <MudTd DataLabel="Position">@context.Description</MudTd>
-                                </RowTemplate>
+                            <RowTemplate>
+                                <MudTd DataLabel="Id">
+                                    @context.Id
+                                </MudTd>
+                                <MudTd DataLabel="Name">@context.Name</MudTd>
+                                <MudTd DataLabel="Position">@context.Description</MudTd>
+                            </RowTemplate>
 
-                                <PagerContent>
-                                    <MudTablePager />
-                                </PagerContent>
-                            </MudTable>
-                        }
-                        else
-                        {
-                            <MudText Color="Color.Dark">Keine Daten verfügbar</MudText>
-                        }
-                    </div>
-                </div>
+                            <PagerContent>
+                                <MudTablePager />
+                            </PagerContent>
+                        </MudTable>
+                    }
+                    else
+                    {
+                        <MudText Color="Color.Dark">Keine Daten verfügbar</MudText>
+                    }
+                </MudPaper>
+
             </StartContent>
 
             <EndContent>
@@ -179,7 +188,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-       
+
         if (assetDtoExtension.AssetDtos != null)
         {
             assetDtoExtension.AssetDtos.Clear();
@@ -296,7 +305,7 @@
     // }
 
     private async Task GetAssetParent()
-     {
+    {
         try
         {
             if (assetDtoExtension.AssetDto.ParentId != null)
@@ -366,7 +375,7 @@
         }
     }
 
-    
+
     // private async Task<bool> HasChildrenAsync(int id)
     // {
     //     List<AssetDto> result = (List<AssetDto>)await ApiClientService.GetChildren(id);
@@ -374,13 +383,13 @@
     // }
 
 
-   private async Task HasChildren(int id)
+    private async Task HasChildren(int id)
     {
         List<AssetDto> result = (List<AssetDto>)await ApiClientService.GetChildren(id);
         if (result != null && result.Count != 0)
         {
             AssetDtoExt temp = assetDtoExtension.AssetDtoExts.Where<AssetDtoExt>(ae => ae.Id == id).FirstOrDefault();
-            if(temp != null)
+            if (temp != null)
             {
                 temp.HasChildren = true;
             }

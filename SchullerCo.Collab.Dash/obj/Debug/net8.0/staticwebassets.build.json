@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ble19srtS6I170+Sk4CmboiUIw/EBtuVT1RakiHXzvE=",
+  "Hash": "CTlyvsKD59/7cwyvz/i9DzmvkrGRBgDKvjaTwQuFKds=",
   "Source": "SchullerCo.Collab.Dash",
   "BasePath": "_content/SchullerCo.Collab.Dash",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "SchullerCo.Collab.Dash\\wwwroot",
       "Source": "SchullerCo.Collab.Dash",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "Pattern": "**"
     }
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "C:\\Users\\CyrilTehgnoYoumto\\.nuget\\packages\\mudblazor\\6.19.1\\staticwebassets\\MudBlazor.min.js"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SchullerCo.Collab.Dash.styles.css",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SchullerCo.Collab.Dash.styles.css",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "SchullerCo.Collab.Dash.styles.css",
       "AssetKind": "All",
@@ -166,13 +166,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SchullerCo.Collab.Dash.styles.css"
+      "OriginalItemSpec": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SchullerCo.Collab.Dash.styles.css"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SchullerCo.Collab.Dash.bundle.scp.css",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SchullerCo.Collab.Dash.bundle.scp.css",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "SchullerCo.Collab.Dash.bundle.scp.css",
       "AssetKind": "All",
@@ -185,13 +185,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SchullerCo.Collab.Dash.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SchullerCo.Collab.Dash.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\app.css",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\favicon.png",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\favicon.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\favicon.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "favicon.svg",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\3dviewer.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\3dviewer.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/3dviewer.svg",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\3dviewer.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\assets.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\assets.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/assets.svg",
       "AssetKind": "All",
@@ -321,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\assets.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\database.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\database.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/database.svg",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\database.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\datasheets.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\datasheets.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/datasheets.svg",
       "AssetKind": "All",
@@ -359,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\datasheets.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\documents.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\documents.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/documents.svg",
       "AssetKind": "All",
@@ -378,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\documents.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\drawings.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\drawings.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/drawings.svg",
       "AssetKind": "All",
@@ -397,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\drawings.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\forms.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\forms.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/forms.svg",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\forms.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\home.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\home.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/home.svg",
       "AssetKind": "All",
@@ -435,10 +435,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\home.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\info.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\info.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/info.svg",
       "AssetKind": "All",
@@ -454,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\info.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\lists.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\lists.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/lists.svg",
       "AssetKind": "All",
@@ -473,10 +473,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\lists.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\qrcode.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\qrcode.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/qrcode.svg",
       "AssetKind": "All",
@@ -492,10 +492,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\qrcode.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\refresh.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\refresh.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/refresh.svg",
       "AssetKind": "All",
@@ -511,10 +511,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\refresh.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\reports.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\reports.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/reports.svg",
       "AssetKind": "All",
@@ -530,10 +530,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\reports.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\statistics.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\statistics.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/statistics.svg",
       "AssetKind": "All",
@@ -549,10 +549,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\statistics.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\status.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\icons\\status.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "icons/status.svg",
       "AssetKind": "All",
@@ -568,10 +568,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\status.svg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\images\\SC_Logo_Web_2023.jpg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\images\\SC_Logo_Web_2023.jpg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "images/SC_Logo_Web_2023.jpg",
       "AssetKind": "All",
@@ -587,10 +587,10 @@
       "OriginalItemSpec": "wwwroot\\images\\SC_Logo_Web_2023.jpg"
     },
     {
-      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\images\\suclogo.svg",
+      "Identity": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\images\\suclogo.svg",
       "SourceId": "SchullerCo.Collab.Dash",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\wwwroot\\",
       "BasePath": "_content/SchullerCo.Collab.Dash",
       "RelativePath": "images/suclogo.svg",
       "AssetKind": "All",
