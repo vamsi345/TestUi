@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KCSkVXhO+DCjJGf0bLIHpYJhP3vTDXi3P/mEEC+TtRJkBjYgm1kxg+M4tTZmE2o4cPoOZUynqyLid/jKpcWOnw==",
+  "dgSpecHash": "gCVoCzknOag2tKGQd+XKufU8/3RV+auNtc7oyEuylAzZdp3UffXXg1795eJPUkvdL+URkquLkNtR2X6P83BpUw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\daniel.matheisel\\Source\\Repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\SchullerCo.Collab.Dash.csproj",
+  "projectFilePath": "C:\\Users\\daniel.matheisel\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\SchullerCo.Collab.Dash.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\daniel.matheisel\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
     "C:\\Users\\daniel.matheisel\\.nuget\\packages\\codebeam.mudblazor.extensions\\6.9.2\\codebeam.mudblazor.extensions.6.9.2.nupkg.sha512",
