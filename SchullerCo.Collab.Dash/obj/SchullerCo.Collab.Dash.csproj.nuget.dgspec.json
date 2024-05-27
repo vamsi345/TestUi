@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\SchullerCo.Collab.Dash.csproj": {}
+    "C:\\Users\\daniel.matheisel\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\SchullerCo.Collab.Dash.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\SchullerCo.Collab.Dash.csproj": {
+    "C:\\Users\\daniel.matheisel\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\SchullerCo.Collab.Dash.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\SchullerCo.Collab.Dash.csproj",
+        "projectUniqueName": "C:\\Users\\daniel.matheisel\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\SchullerCo.Collab.Dash.csproj",
         "projectName": "SchullerCo.Collab.Dash",
-        "projectPath": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\SchullerCo.Collab.Dash.csproj",
-        "packagesPath": "C:\\Users\\CyrilTehgnoYoumto\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CyrilTehgnoYoumto\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\",
+        "projectPath": "C:\\Users\\daniel.matheisel\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\SchullerCo.Collab.Dash.csproj",
+        "packagesPath": "C:\\Users\\daniel.matheisel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\daniel.matheisel\\source\\repos\\SchullerCo-Collab-Dash\\SchullerCo.Collab.Dash\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\CyrilTehgnoYoumto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\daniel.matheisel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -39,11 +39,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -82,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
