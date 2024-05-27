@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SchullerCo.Collab.Dash")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c6848140f7b85eb03cebc56449472560083f1af7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3493280821fd9de9372c610431a37dab3f8a5bc8")]
 [assembly: System.Reflection.AssemblyProductAttribute("SchullerCo.Collab.Dash")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SchullerCo.Collab.Dash")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

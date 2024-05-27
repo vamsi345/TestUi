@@ -35,7 +35,6 @@
             
         }
 
-
         public static async Task<AssetDto> GetAsset(int id)
         {
             try
@@ -47,9 +46,23 @@
                 return null;
             }
             
-
         }
 
+        public static async Task<AssetDto> GetParent(int id)
+        {
+            try
+            {
+                AssetDto temp = await ApiClient().AssetsGETAsync(id);
+                if (temp.ParentId != null) { return await ApiClient().AssetsGETAsync((int)temp.ParentId); }
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                return null;
+            }
+
+
+        }
 
         public static async Task<ICollection<AssetDto>> GetChildren(int id)
         {
