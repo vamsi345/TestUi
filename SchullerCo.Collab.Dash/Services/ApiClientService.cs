@@ -5,7 +5,7 @@
 
 
 
-        private static Client ApiClient()
+        public static Client ApiClient()
         {
             var handler = new HttpClientHandler
             {

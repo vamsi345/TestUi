@@ -6,6 +6,7 @@
 @using System.Threading.Tasks
 @using System.Collections.Generic
 @using SchullerCo.Collab.Dash.Services
+@using SchullerCo.Collab.Dash.Models.Asset
 
 
 @inject HttpClient Http
@@ -43,45 +44,46 @@
                     </MudGrid>
 
                     <!-- Zweite Zeile mit dem MudText -->
-                    @if (!string.IsNullOrEmpty(errorMessage))
-                    {
-                        <MudText Color="Color.Error">@errorMessage</MudText>
-                    }
-                    else if (assetDtoExtension.AssetDtos != null && assetDtoExtension.AssetDtos.Any())
-                    {
-                        <MudTable Items=@assetDtoExtension.AssetDtos Hover="true" Striped="true"
-                                  RowClass="cursor-pointer" T="AssetDto"
-                                  OnRowClick="OnRowClick" Filter="new Func<AssetDto,bool>(FilterFunc1)">
-                            <ToolBarContent>
-                                <MudSpacer />
-                                <div>
-                                    <MudTextField @bind-Value="searchString" Placeholder="Search"
-                                                  Variant="Variant.Outlined" Margin="Margin.Dense"
-                                                  Adornment="Adornment.Start"
-                                                  AdornmentIcon="@Icons.Material.Filled.Search"
-                                                  IconSize="Size.Medium" Class="mt-0"
-                                                  Style="@($"background:{Colors.Grey.Lighten3};")">
-                                    </MudTextField>
-                                </div>
-                            </ToolBarContent>
-                            <HeaderContent>
-                                <MudTh>
-                                    <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Id)">
-                                        Id
-                                    </MudTableSortLabel>
-                                </MudTh>
-                                <MudTh>
-                                    <MudTableSortLabel InitialDirection="SortDirection.Ascending"
-                                                       SortBy="new Func<AssetDto, object>(x=>x.Name)">
-                                        Name
-                                    </MudTableSortLabel>
-                                </MudTh>
-                                <MudTh>
-                                    <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Description)">
-                                        Description
-                                    </MudTableSortLabel>
-                                </MudTh>
-                            </HeaderContent>
+                    <div>
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <MudText Color="Color.Error">@errorMessage</MudText>
+                        }
+                        else if (assetDtoExtension.AssetDtos != null && assetDtoExtension.AssetDtos.Any())
+                        {
+                            <MudTable Items=@assetDtoExtension.AssetDtos Hover="true" Striped="true"
+                                      RowClass="cursor-pointer" T="AssetDto"
+                                      OnRowClick="OnRowClick" Filter="new Func<AssetDto,bool>(FilterFunc1)">
+                                <ToolBarContent>
+                                    <MudSpacer />
+                                    <div>
+                                        <MudTextField @bind-Value="searchString" Placeholder="Search"
+                                                      Variant="Variant.Outlined" Margin="Margin.Dense"
+                                                      Adornment="Adornment.Start"
+                                                      AdornmentIcon="@Icons.Material.Filled.Search"
+                                                      IconSize="Size.Medium" Class="mt-0" 
+                                                      Style="@($"background:{Colors.Grey.Lighten3};")">
+                                        </MudTextField>
+                                    </div>
+                                </ToolBarContent>
+                                <HeaderContent>
+                                    <MudTh>
+                                        <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Id)">
+                                            Id
+                                        </MudTableSortLabel>
+                                    </MudTh>
+                                    <MudTh>
+                                        <MudTableSortLabel InitialDirection="SortDirection.Ascending"
+                                                           SortBy="new Func<AssetDto, object>(x=>x.Name)">
+                                            Name
+                                        </MudTableSortLabel>
+                                    </MudTh>
+                                    <MudTh>
+                                        <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Description)">
+                                            Description
+                                        </MudTableSortLabel>
+                                    </MudTh>
+                                </HeaderContent>
 
                             <RowTemplate>
                                 <MudTd DataLabel="Id">
@@ -178,17 +180,25 @@
 
     double _percentage = 50;
     string errorMessage = string.Empty;
-    // ICollection<AssetDto>? assetDtos = null;
-    // AssetDto? assetDto = null;
-    // bool hasChildren = false;
     private string searchString = "";
 
     private string currentPath = string.Empty;
     AssetDtoExtension assetDtoExtension = new AssetDtoExtension();
 
+
+
+    string searchQuery;
+    IList<IBrowserFile> files = new List<IBrowserFile>();
+    private ICollection<AssetDto> assets = new List<AssetDto>();
+    private List<AssetViewModel> rootAssets = new List<AssetViewModel>();
+    private AssetViewModel selectedAsset;
+    private List<AssetViewModel> currentPathList = new List<AssetViewModel>();
+    Client apiClient;
+
+
     protected override async Task OnInitializedAsync()
     {
-
+       
         if (assetDtoExtension.AssetDtos != null)
         {
             assetDtoExtension.AssetDtos.Clear();
@@ -200,10 +210,11 @@
             assetDtoExtension.AssetDtoExts = new List<AssetDtoExt>();
         }
 
-        await GetAssetByIdAsync(1);
-        await SetCurrentpath();
-        assetDtoExtension.AssetDtos.Add(assetDtoExtension.AssetDto);
+    await GetAssetByIdAsync(1);
+    await SetCurrentpath();
+    assetDtoExtension.AssetDtos.Add(assetDtoExtension.AssetDto);
     }
+    */
 
     // protected async Task OnClickAsset(int id)
     // {
@@ -212,48 +223,52 @@
 
     public async Task OnRowClick(TableRowClickEventArgs<AssetDto> args)
     {
-
-        await SetTableViewWithAssetChildren(args.Item.Id);
-        assetDtoExtension.AssetDto = args.Item;
-        StateHasChanged();
-
+        var tempassets = assets.Where(a=>a.ParentId == args.Item.Id).ToList();
+        var assetViewModels = new List<AssetViewModel>();
+        assetViewModels.AddRange(tempassets.Select(a => new AssetViewModel() { Asset = a }));
+        if(assetViewModels.Count !=0 )
+        {
+            rootAssets = assetViewModels;
+            foreach (var rootAsset in rootAssets)
+            {
+                SetChildren(rootAsset, assetViewModels);
+            }
+        }
+        await SetCurrentPath();
     }
 
     public async Task OnUpCLick(MouseEventArgs args)
     {
         await GetAssetParent();
+        await SetCurrentPath();
         StateHasChanged();
     }
 
-    private async Task SetCurrentpath()
+    private async Task SetCurrentPath()
     {
         try
         {
-            if (assetDtoExtension.AssetDto != null)
-            {
 
-                AssetDto tempAssetDto = assetDtoExtension.AssetDtos.FirstOrDefault<AssetDto>();
+
+            if (rootAssets.FirstOrDefault().Asset.ParentId != null)
+            {
+                string tempCurrentPath = string.Empty;
+                AssetDto tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, rootAssets.FirstOrDefault().Asset);
                 if (tempAssetDto != null)
                 {
-                    List<AssetDto> temp = new List<AssetDto>();
-                    string tempCurrentPath = string.Empty;
-                    if (await ApiClientService.GetParent(tempAssetDto.Id) != null)
+                    do
                     {
-                        do
-                        {
-                            tempAssetDto = await ApiClientService.GetParent(tempAssetDto.Id);
-                            tempCurrentPath = tempAssetDto.Name + " | " + tempCurrentPath;
-
-                        }
-                        while (await ApiClientService.GetParent(tempAssetDto.Id) != null);
+                        tempCurrentPath = tempAssetDto.Name + " | " + tempCurrentPath;
+                        tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, tempAssetDto);
                     }
+                    while (tempAssetDto != null);
 
                     currentPath = tempCurrentPath;
                 }
 
-                StateHasChanged();
             }
-
+            else currentPath = "";
+            StateHasChanged();
         }
         catch (Exception ex)
         {
@@ -308,19 +323,31 @@
     {
         try
         {
-            if (assetDtoExtension.AssetDto.ParentId != null)
+
+
+
+            var parentId = rootAssets.FirstOrDefault()?.Asset.ParentId;
+            var parent = assets.Where(a => a.Id == parentId);
+            if(parent.Count() > 0)
             {
-                int parentId = (int)assetDtoExtension.AssetDto.ParentId;
-                assetDtoExtension.AssetDto = await ApiClientService.GetAsset(parentId);
-                await SetTableViewWithAssetChildren(parentId);
-                StateHasChanged();
-            }
-            else
-            {
-                this.assetDtoExtension.AssetDtos.Clear();
-                this.assetDtoExtension.AssetDtos.Add(assetDtoExtension.AssetDto);
-                await SetCurrentpath();
-                StateHasChanged();
+                var grandParentId = parent.FirstOrDefault<AssetDto>().ParentId;
+
+                if (parentId != null)
+                {
+                    var tempassets = assets.Where(a => a.ParentId == grandParentId).ToList();
+                    var assetViewModels = tempassets.Select(a => new AssetViewModel() { Asset = a }).ToList();
+
+
+
+                    if (assetViewModels.Count != 0)
+                    {
+                        rootAssets = assetViewModels;
+                        foreach (var rootAsset in assetViewModels)
+                        {
+                            SetChildren(rootAsset, assetViewModels);
+                        }
+                    }
+                }
             }
 
         }
@@ -360,7 +387,7 @@
             {
                 assetDtoExtension.AssetDto = await ApiClientService.GetAsset(id);
                 assetDtoExtension.AssetDtos = await ApiClientService.GetChildren(id);
-                await SetCurrentpath();
+                await SetCurrentPath();
                 StateHasChanged();
             }
 
@@ -402,16 +429,6 @@
         }
     }
 
-    private Task OnDoubleClicked()
-    {
-        if (true)
-        {
-            _percentage = 50;
-        }
-
-        return Task.CompletedTask;
-    }
-
     private bool FilterFunc1(AssetDto AssetDto) => FilterFunc(AssetDto, searchString);
 
     private bool FilterFunc(AssetDto AssetDto, string searchString)
@@ -427,14 +444,8 @@
         return false;
     }
 
-
-    IList<IBrowserFile> files = new List<IBrowserFile>();
-    private void UploadFiles(IBrowserFile file)
-    {
-        files.Add(file);
-        //TODO upload the files to the server
     }
-}
+
 
 <style>
     .mud-tabs .mud-tab.mud-tab-active {
