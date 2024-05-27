@@ -19,7 +19,7 @@
 
         <MudSpacer />
         <!-- Search field large desktop only -->
-        <MudHidden Breakpoint="Breakpoint.Sm">
+       @*  <MudHidden Breakpoint="Breakpoint.Sm">
             <MudHidden Breakpoint="Breakpoint.Xs">
                 <MudTextField Adornment="Adornment.Start"
                               AdornmentIcon="@Icons.Material.Filled.Search"
@@ -30,10 +30,10 @@
                               Variant="Variant.Outlined" Margin="Margin.Dense">
                 </MudTextField>
             </MudHidden>
-        </MudHidden>
+        </MudHidden> *@
 
         <!-- Search field small desktop only -->
-        <MudHidden Breakpoint="Breakpoint.Md">
+        @* <MudHidden Breakpoint="Breakpoint.Md">
             <MudHidden Breakpoint="Breakpoint.Lg">
                 <MudHidden Breakpoint="Breakpoint.Xl">
                     <MudHidden Breakpoint="Breakpoint.Xxl">
@@ -50,7 +50,7 @@
                     </MudHidden>
                 </MudHidden>
             </MudHidden>
-        </MudHidden>
+        </MudHidden> *@
 
         <!-- Menü right -->
         <MudMenu Color="Color.Dark" Icon="@Icons.Material.Filled.MoreVert">
@@ -68,7 +68,7 @@
             <MudDrawer @bind-Open="@_drawerOpenLeft" Elevation="2">
                 <MudDrawerHeader>
                     <div class="col container d-flex align-center ml-2">
-                        <MudImage Src="images\SC_Logo_Web_2023.jpg" Width="130" Height="40" Alt="Schuller&Company Logo"></MudImage>
+                        <MudImage Src="images\suclogo.svg" Width="130" Height="40" Alt="Schuller&Company Logo"></MudImage>
                     </div>
                 </MudDrawerHeader>
 
