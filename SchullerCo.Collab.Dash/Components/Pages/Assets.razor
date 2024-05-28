@@ -8,43 +8,44 @@
 @using SchullerCo.Collab.Dash.Services
 @using SchullerCo.Collab.Dash.Models.Asset
 
-
-@inject HttpClient Http
+@inject HttpClient Http 
 
 <PageTitle>Assets</PageTitle>
 
-<MudContainer Class="mt-16 d-flex" MaxWidth="MaxWidth.False">
+<MudContainer Class="mt-16 d-flex" MaxWidth="MaxWidth.ExtraExtraLarge">
     <MudGrid Class="d-flex justify-start">
 
-        <MudItem Class="" xs="12">
+        <MudItem xs="12">
             <MudText Typo="Typo.h4" GutterBottom="true">Assets</MudText>
-            <MudText Typo="Typo.subtitle2">@currentPath</MudText>
-            </MudItem>
-            <MudSplitter OnDoubleClicked="@OnDoubleClicked"
-                         @bind-Dimension="@_percentage">
-                <StartContent>
-                    <MudPaper Elevation="0" Class="pa" Style="width: 100%; padding: 0px; margin: 5px;">
+            <MudSpacer />
+            <MudPaper Elevation="0" Style="@($"color:{Colors.Grey.Darken1};height: 40px; width: 100%; padding: 0px;")"  
+            Class="d-flex align-center"><MudText Typo="Typo.subtitle2">PATH: @currentPath</MudText></MudPaper>
+        </MudItem>
 
                         @* <div class="row" style="height:100%; width: 100%; padding: 10px; margin: 0;"><div> *@
-
-                        @* <MudText Typo="Typo.subtitle2">@currentPath</MudText> *@
-
-                        <!-- Erste Zeile mit den Buttons -->
-                        <MudGrid>
+        <MudSplitter ContentStyle="height: 100%;" OnDoubleClicked="@OnDoubleClicked" @bind-Dimension="@_percentage">
+            <StartContent>
+                <MudPaper Elevation="0" Style="overflow-inline: auto; height: 100%; width: 100%; padding: 0px; margin: 5px;">
+                    @* <div class="row" style="height:100%; width: 100%; padding: 10px; margin: 0;"><div> *@
+                    <!-- Erste Zeile mit den Buttons -->
+                    <MudPaper Class="d-flex flex-row flex-grow-1 gap-1" Elevation="0">
                             <MudItem>
                                 <MudButton Variant="Variant.Filled" DisableElevation="true" StartIcon="@Icons.Material.Filled.ArrowBack"
                                            OnClick="@OnUpCLick" Color="Color.Primary">
-                                    GO BACK
+                                    BACK
                                 </MudButton>
+                             
+                            </MudItem>
+                            <MudItem>
                                 <MudButton Variant="Variant.Filled" Disabled="true" DisableElevation="true"
                                            StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.QrCode)" Color="Color.Primary">
                                     QRCODE
                                 </MudButton>
                             </MudItem>
-                        </MudGrid>
-
-                        <!-- Zweite Zeile mit dem MudText -->
-                        @if (!string.IsNullOrEmpty(errorMessage))
+                    </MudPaper>
+                  
+                    <!-- Zweite Zeile mit dem MudText -->
+                    @if (!string.IsNullOrEmpty(errorMessage))
                     {
                         <MudText Color="Color.Error">@errorMessage</MudText>
                     }
@@ -53,6 +54,7 @@
                         <MudTable Items=@rootAssets.Select(a=>a.Asset) Hover="true" Striped="true"
                                   RowClass="cursor-pointer" T="AssetDto"
                                   OnRowClick="OnRowClick" Filter="new Func<AssetDto,bool>(FilterFunc1)">
+
                             <ToolBarContent>
                                 <MudSpacer />
                                 <div>
@@ -65,6 +67,7 @@
                                     </MudTextField>
                                 </div>
                             </ToolBarContent>
+
                             <HeaderContent>
                                 <MudTh>
                                     <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Id)">
@@ -111,21 +114,20 @@
                         <MudText Color="Color.Dark">Keine Daten verfügbar</MudText>
                     }
                 </MudPaper>
-
             </StartContent>
 
             <EndContent>
-                <MudItem>
+                <MudPaper Elevation="0" Style="padding: 0px; margin: 5px;">
                     <!-- Second column for the menu with tabs -->
-                    <MudTabs PanelClass="mt-6" Elevation="1" Rounded="true"
-                             Class="my-6  mx-3" Color="Color.Default">
+                    <MudTabs PanelClass="mt-3" Elevation="1" Rounded="true"
+                             Color="Color.Default">
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.ModelViewer)" Text="3D VIEWER">
 
                         </MudTabPanel>
+
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.DataBase)" Text="DATA">
                             <MudTabs Rounded="true">
-
-                                <MudTabPanel>
+                                <MudTabPanel Style="" Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Aveva)" Text="AVEVA">
                                     <ChildContent>
                                         <MudText>Custom tab content only</MudText>
                                     </ChildContent>
@@ -134,12 +136,10 @@
                                             @context
                                         </MudTooltip>
                                     </TabWrapperContent>
-                                    <TabContent>
-                                        <MudText Typo="Typo.button">AVEVA DATA</MudText>
-                                    </TabContent>
+                                   
                                 </MudTabPanel>
 
-                                <MudTabPanel>
+                                <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Bim)" Text="BIM">
                                     <ChildContent>
                                         <MudText>Both custom tab and wrapper content</MudText>
                                     </ChildContent>
@@ -148,10 +148,7 @@
                                             @context
                                         </MudTooltip>
                                     </TabWrapperContent>
-                                    <TabContent>
-                                        <MudText Typo="Typo.button">SPECKLE DATA</MudText>
-                                    </TabContent>
-
+                                    
                                 </MudTabPanel>
                             </MudTabs>
                         </MudTabPanel>
@@ -159,6 +156,7 @@
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Documents)" Text="DOCUMENTS">
                             <MudGrid Class="mt-2">
                                 <MudItem xs="12" Class="d-flex justify-end">
+
                                     <MudFileUpload T="IBrowserFile" FilesChanged="UploadFiles">
                                         <ButtonTemplate>
                                             <MudButton HtmlTag="label"
@@ -169,6 +167,7 @@
                                             </MudButton>
                                         </ButtonTemplate>
                                     </MudFileUpload>
+
                                 </MudItem>
                             </MudGrid>
                         </MudTabPanel>
@@ -176,8 +175,9 @@
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Forms)" Text="FORMS">
 
                         </MudTabPanel>
+
                     </MudTabs>
-                </MudItem>
+                </MudPaper>
             </EndContent>
         </MudSplitter>
     </MudGrid>
@@ -459,6 +459,13 @@
     }
 }
 
+    IList<IBrowserFile> files = new List<IBrowserFile>();
+    private void UploadFiles(IBrowserFile file)
+    {
+        files.Add(file);
+        //TODO upload the files to the server
+    }
+}
 
 <style>
     .mud-tabs .mud-tab.mud-tab-active {

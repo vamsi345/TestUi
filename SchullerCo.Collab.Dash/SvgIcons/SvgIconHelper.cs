@@ -11,7 +11,7 @@
             }
             catch (System.Exception ex)
             {
-                return null;
+                return ex.Message;
             }
 
         }
