@@ -49,7 +49,7 @@
                         <MudText Color="Color.Error">@errorMessage</MudText>
                     }
                     else if (assets != null && assets.Any())
-                    {
+                    { 
                         <MudTable Items=@rootAssets.Select(a=>a.Asset) Hover="true" Striped="true"
                                   RowClass="cursor-pointer" T="AssetDto"
                                   OnRowClick="OnRowClick" Filter="new Func<AssetDto,bool>(FilterFunc1)">
@@ -85,10 +85,19 @@
                             </HeaderContent>
 
                             <RowTemplate>
-                                <MudTd DataLabel="Id">
-                                    @context.Id
-                                </MudTd>
-                                <MudTd DataLabel="Name">@context.Name</MudTd>
+                                @if (@HasChildren(rootAssets.Where(a => a.Asset.Id == context.Id).SingleOrDefault()))
+                                {
+                                    <MudTd DataLabel="Id">
+                                        Children
+                                    </MudTd>
+                                }
+                                else
+                                {
+                                    <MudTd DataLabel="Id">
+                                        No Children
+                                    </MudTd>
+                                }
+                                    <MudTd DataLabel="Name">@context.Name</MudTd>
                                     <MudTd DataLabel="Position">@context.Description</MudTd>
                                 </RowTemplate>
 
@@ -192,7 +201,7 @@
     private List<AssetViewModel> rootAssets = new List<AssetViewModel>();
     private AssetViewModel selectedAsset;
     private List<AssetViewModel> currentPathList = new List<AssetViewModel>();
-    Client apiClient;
+    Client apiClient ;
 
 
     protected override async Task OnInitializedAsync()
@@ -221,6 +230,12 @@
 
         }
 
+    }
+
+    public bool HasChildren(AssetViewModel  assetViewModel)
+    {
+        if (assetViewModel != null && assetViewModel.Children.Count > 0) return true;
+        return false;
     }
 
     private void SetChildren(AssetViewModel parent, List<AssetViewModel> allAssets)
@@ -252,18 +267,28 @@
 
     public async Task OnRowClick(TableRowClickEventArgs<AssetDto> args)
     {
-        var tempassets = assets.Where(a => a.ParentId == args.Item.Id).ToList();
-        var assetViewModels = new List<AssetViewModel>();
-        assetViewModels.AddRange(tempassets.Select(a => new AssetViewModel() { Asset = a }));
-        if (assetViewModels.Count != 0)
+        //var tempassets = assets.Where(a => a.ParentId == args.Item.Id).ToList();
+        //var assetViewModels = new List<AssetViewModel>();
+        //assetViewModels.AddRange(tempassets.Select(a => new AssetViewModel() { Asset = a }));
+
+
+
+        if (rootAssets.Where(a=>a.Asset.Id == args.Item.Id).FirstOrDefault().Children.Count>0)
         {
-            rootAssets = assetViewModels;
-            foreach (var rootAsset in rootAssets)
+            var assetViewModels = assets.Select(a => new AssetViewModel { Asset = a }).ToList();
+
+            if (assetViewModels.Count != 0)
             {
-                SetChildren(rootAsset, assetViewModels);
+                rootAssets = assetViewModels.Where(a => a.Asset.ParentId == args.Item.Id).ToList();
+                foreach (var rootAsset in rootAssets)
+                {
+                    SetChildren(rootAsset, assetViewModels);
+                }
             }
+            await SetCurrentPath();
+            StateHasChanged();
         }
-        await SetCurrentPath();
+
     }
 
     public async Task OnUpCLick(MouseEventArgs args)
@@ -278,26 +303,28 @@
         try
         {
 
-
-            if (rootAssets.FirstOrDefault().Asset.ParentId != null)
+            if(rootAssets.Count > 0)
             {
-                string tempCurrentPath = string.Empty;
-                AssetDto tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, rootAssets.FirstOrDefault().Asset);
-                if (tempAssetDto != null)
+                if (rootAssets.FirstOrDefault().Asset.ParentId != null)
                 {
-                    do
+                    string tempCurrentPath = string.Empty;
+                    AssetDto tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, rootAssets.FirstOrDefault().Asset);
+                    if (tempAssetDto != null)
                     {
-                        tempCurrentPath = tempAssetDto.Name + " | " + tempCurrentPath;
-                        tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, tempAssetDto);
+                        do
+                        {
+                            tempCurrentPath = tempAssetDto.Name + " | " + tempCurrentPath;
+                            tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, tempAssetDto);
+                        }
+                        while (tempAssetDto != null);
+
+                        currentPath = tempCurrentPath;
                     }
-                    while (tempAssetDto != null);
 
-                    currentPath = tempCurrentPath;
                 }
-
+                else currentPath = "";
+                StateHasChanged();
             }
-            else currentPath = "";
-            StateHasChanged();
         }
         catch (Exception ex)
         {
@@ -308,6 +335,10 @@
             }
         }
     }
+
+
+
+
 
     private async Task GetAssets()
     {
@@ -327,6 +358,51 @@
     }
 
     private async Task GetAssetParent()
+    {
+        try
+        {
+            var parentId = rootAssets.FirstOrDefault()?.Asset.ParentId;
+            
+
+            var assetViewModels = assets.Select(a => new AssetViewModel { Asset = a }).ToList();
+            var parent = assetViewModels.Where(a => a.Asset.Id == parentId).FirstOrDefault();
+
+            if (parent != null) 
+            {
+                var grandParentId = parent.Asset.ParentId;
+
+                if (parentId != null)
+                {
+                    var tempRootAssets = assetViewModels.Where(a => a.Asset.ParentId == grandParentId).ToList();
+
+                    foreach (var elem in tempRootAssets)
+                    {
+                        SetChildren(elem, tempRootAssets);
+                    }
+
+                    if (tempRootAssets.Count > 0)
+                    {
+                        rootAssets = assetViewModels.Where(a => a.Asset.ParentId == grandParentId).ToList();
+                        foreach (var rootAsset in rootAssets)
+                        {
+                            SetChildren(rootAsset, assetViewModels);
+                        }
+                    }
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
+            if (ex.InnerException != null)
+            {
+                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
+            }
+        }
+    }
+
+    private async Task GetAssetParent1()
     {
         try
         {
@@ -364,6 +440,7 @@
             }
         }
     }
+
 
 
     private bool FilterFunc1(AssetDto AssetDto) => FilterFunc(AssetDto, searchString);
