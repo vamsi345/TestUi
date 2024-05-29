@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="55" viewBox="0 0 65 55">
+  <g id="Members_Button" data-name="Members Button" transform="translate(-718 -285)">
+    <g id="Rechteck_1523" data-name="Rechteck 1523" transform="translate(718 285)" fill="#707070" stroke="#707070" stroke-linejoin="bevel" stroke-width="3">
+      <rect width="15" height="15" stroke="none"/>
+      <rect x="1.5" y="1.5" width="12" height="12" fill="none"/>
+    </g>
+    <g id="Rechteck_1524" data-name="Rechteck 1524" transform="translate(743 285)" fill="none" stroke="#707070" stroke-linejoin="bevel" stroke-width="3">
+      <rect width="40" height="15" stroke="none"/>
+      <rect x="1.5" y="1.5" width="37" height="12" fill="none"/>
+    </g>
+    <g id="Rechteck_1525" data-name="Rechteck 1525" transform="translate(743 305)" fill="#707070" stroke="#707070" stroke-linejoin="bevel" stroke-width="3">
+      <rect width="40" height="15" stroke="none"/>
+      <rect x="1.5" y="1.5" width="37" height="12" fill="none"/>
+    </g>
+    <g id="Rechteck_1526" data-name="Rechteck 1526" transform="translate(743 325)" fill="none" stroke="#707070" stroke-linejoin="bevel" stroke-width="3">
+      <rect width="40" height="15" stroke="none"/>
+      <rect x="1.5" y="1.5" width="37" height="12" fill="none"/>
+    </g>
+    <line id="Linie_2" data-name="Linie 2" x1="20" transform="translate(724 332)" fill="none" stroke="#707070" stroke-width="3"/>
+    <path id="Line_3" data-name="Line 3" d="M1.5,33.5h-3V0h3Z" transform="translate(725 300)" fill="#707070"/>
+    <line id="Linie_4" data-name="Linie 4" x1="20" transform="translate(724 313)" fill="none" stroke="#707070" stroke-width="3"/>
+  </g>
+</svg>
