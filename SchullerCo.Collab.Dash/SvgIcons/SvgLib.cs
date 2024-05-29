@@ -17,7 +17,8 @@
         public static string? Statistics = "statistics";
         public static string? Status = "status";
         public static string? Refresh = "refresh";
-
-
+        public static string? Bim = "bim";
+        public static string? Aveva = "aveva";
+        public static string? Members = "members";
     }
 }

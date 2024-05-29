@@ -8,54 +8,79 @@
 @using SchullerCo.Collab.Dash.Services
 @using SchullerCo.Collab.Dash.Models.Asset
 
-
 @inject HttpClient Http
 
 <PageTitle>Assets</PageTitle>
 
-<MudContainer Class="mt-16 d-flex" MaxWidth="MaxWidth.False">
+<MudContainer Class="mt-16 d-flex" MaxWidth="MaxWidth.ExtraExtraLarge">
     <MudGrid Class="d-flex justify-start">
 
-        <MudItem Class="" xs="12">
+        <MudItem xs="12">
             <MudText Typo="Typo.h4" GutterBottom="true">Assets</MudText>
-            <MudText Typo="Typo.subtitle2">@currentPath</MudText>
+            <MudSpacer />
+            <MudPaper Elevation="0" Style="@($"color:{Colors.Grey.Darken1}; height: 40px; width: 100%; padding: 0px; display: flex; align-items: center;")"
+                      Class="d-flex align-center">
+                <MudText Typo="Typo.subtitle2" Class="d-flex align-items-center">
+                    <div class="d-flex">
+                        @foreach (var segment in GetPathSegments())
+                        {
+                            <button type="button" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                                    class="btn btn-outline-primary btn-sm" @onclick="() => OnPathSegmentClick(segment)">
+                                @segment
+                            </button>
+                            @* <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="() => OnPathSegmentClick(segment)">
+                        @segment
+                        </MudButton> *@
+                            @if (segment != GetPathSegments().Last())
+                            {
+                                <MudText Typo="Typo.h6">-</MudText>
+                            }
+                        }
+                    </div>
+                </MudText>
+
+            </MudPaper>
+            @*   <MudPaper Class="d-flex flex-row flex-grow-1 gap-2" Elevation="0">
+            <MudItem>
+            <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.ArrowBack"
+            OnClick="@OnUpCLick" Color="Color.Primary"
+            Disabled="true">
+            BACK
+            </MudButton>
             </MudItem>
-            <MudSplitter OnDoubleClicked="@OnDoubleClicked"
-                         @bind-Dimension="@_percentage">
-                <StartContent>
-                    <MudPaper Elevation="0" Class="pa" Style="width: 100%; padding: 0px; margin: 5px;">
+            <MudItem>
+            <MudButton Variant="Variant.Filled" Disabled="true"
+            StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.QrCode)" Color="Color.Primary">
+            QRCODE
+            </MudButton>
+            </MudItem>
+            </MudPaper> *@
+        </MudItem>
 
-                        @* <div class="row" style="height:100%; width: 100%; padding: 10px; margin: 0;"><div> *@
+        <MudSplitter ContentStyle="height: 100%;" OnDoubleClicked="@OnDoubleClicked" @bind-Dimension="@_percentage">
+            <StartContent>
+                <MudPaper Elevation="0" Style="overflow-inline: auto; height: 100%; width: 100%; padding: 0px; margin: 5px;">
 
-                        @* <MudText Typo="Typo.subtitle2">@currentPath</MudText> *@
-
-                        <!-- Erste Zeile mit den Buttons -->
-                        <MudGrid>
-                            <MudItem>
-                                <MudButton Variant="Variant.Filled" DisableElevation="true" StartIcon="@Icons.Material.Filled.ArrowBack"
-                                           OnClick="@OnUpCLick" Color="Color.Primary">
-                                    GO BACK
-                                </MudButton>
-                                <MudButton Variant="Variant.Filled" Disabled="true" DisableElevation="true"
-                                           StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.QrCode)" Color="Color.Primary">
-                                    QRCODE
-                                </MudButton>
-                            </MudItem>
-                        </MudGrid>
-
-                        <!-- Zweite Zeile mit dem MudText -->
-                        @if (!string.IsNullOrEmpty(errorMessage))
+                    @if (!string.IsNullOrEmpty(errorMessage))
                     {
                         <MudText Color="Color.Error">@errorMessage</MudText>
                     }
                     else if (assets != null && assets.Any())
-                    { 
-                        <MudTable Items=@rootAssets.Select(a=>a.Asset) Hover="true" Striped="true"
+                    {
+                        <MudTable RowsPerPage="100" Items=@rootAssets.Select(a=>a.Asset) Hover="true" Striped="true"
                                   RowClass="cursor-pointer" T="AssetDto"
-                                  OnRowClick="OnRowClick" Filter="new Func<AssetDto,bool>(FilterFunc1)">
+                                  Filter="new Func<AssetDto,bool>(FilterFunc1)">
+                            @*  OnRowClick="OnRowClick" *@
                             <ToolBarContent>
                                 <MudSpacer />
                                 <div>
+
+                                  @*   <form class="d-flex" role="search">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-success" type="submit">Search</button>
+                                    </form> *@
+
                                     <MudTextField @bind-Value="searchString" Placeholder="Search"
                                                   Variant="Variant.Outlined" Margin="Margin.Dense"
                                                   Adornment="Adornment.Start"
@@ -65,11 +90,12 @@
                                     </MudTextField>
                                 </div>
                             </ToolBarContent>
+
                             <HeaderContent>
                                 <MudTh>
-                                    <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Id)">
-                                        Id
-                                    </MudTableSortLabel>
+                                    @*  <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Id)">
+                                Id
+                                </MudTableSortLabel> *@
                                 </MudTh>
                                 <MudTh>
                                     <MudTableSortLabel InitialDirection="SortDirection.Ascending"
@@ -88,44 +114,44 @@
                                 @if (@HasChildren(rootAssets.Where(a => a.Asset.Id == context.Id).SingleOrDefault()))
                                 {
                                     <MudTd DataLabel="Id">
-                                        Children
+                                        @*<MudButton StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.Members)" Variant="Variant.Filled" OnClick="() => OnButtonClick(context)">Children</MudButton> *@
+                                        <button type="button" class="btn btn-primary btn-sm" @onclick="() => OnButtonClick(context)">Open</button>
                                     </MudTd>
                                 }
                                 else
                                 {
                                     <MudTd DataLabel="Id">
-                                        No Children
+
                                     </MudTd>
                                 }
-                                    <MudTd DataLabel="Name">@context.Name</MudTd>
-                                    <MudTd DataLabel="Position">@context.Description</MudTd>
-                                </RowTemplate>
+                                <MudTd DataLabel="Name">@context.Name</MudTd>
+                                <MudTd DataLabel="Position">@context.Description</MudTd>
+                            </RowTemplate>
 
-                                <PagerContent>
-                                    <MudTablePager />
-                                </PagerContent>
-                            </MudTable>
+                            <PagerContent>
+                                <MudTablePager />
+                            </PagerContent>
+                        </MudTable>
                     }
                     else
                     {
                         <MudText Color="Color.Dark">Keine Daten verfügbar</MudText>
                     }
                 </MudPaper>
-
             </StartContent>
 
             <EndContent>
-                <MudItem>
-                    <!-- Second column for the menu with tabs -->
-                    <MudTabs PanelClass="mt-6" Elevation="1" Rounded="true"
-                             Class="my-6  mx-3" Color="Color.Default">
+                <MudPaper Elevation="0" Style="padding: 0px; margin: 5px;">
+
+                    <MudTabs PanelClass="mt-3" Elevation="1" Rounded="true"
+                             Color="Color.Default">
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.ModelViewer)" Text="3D VIEWER">
 
                         </MudTabPanel>
+
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.DataBase)" Text="DATA">
                             <MudTabs Rounded="true">
-
-                                <MudTabPanel>
+                                <MudTabPanel Style="" Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Aveva)" Text="AVEVA">
                                     <ChildContent>
                                         <MudText>Custom tab content only</MudText>
                                     </ChildContent>
@@ -134,12 +160,10 @@
                                             @context
                                         </MudTooltip>
                                     </TabWrapperContent>
-                                    <TabContent>
-                                        <MudText Typo="Typo.button">AVEVA DATA</MudText>
-                                    </TabContent>
+
                                 </MudTabPanel>
 
-                                <MudTabPanel>
+                                <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Bim)" Text="BIM">
                                     <ChildContent>
                                         <MudText>Both custom tab and wrapper content</MudText>
                                     </ChildContent>
@@ -148,10 +172,6 @@
                                             @context
                                         </MudTooltip>
                                     </TabWrapperContent>
-                                    <TabContent>
-                                        <MudText Typo="Typo.button">SPECKLE DATA</MudText>
-                                    </TabContent>
-
                                 </MudTabPanel>
                             </MudTabs>
                         </MudTabPanel>
@@ -159,6 +179,7 @@
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Documents)" Text="DOCUMENTS">
                             <MudGrid Class="mt-2">
                                 <MudItem xs="12" Class="d-flex justify-end">
+
                                     <MudFileUpload T="IBrowserFile" FilesChanged="UploadFiles">
                                         <ButtonTemplate>
                                             <MudButton HtmlTag="label"
@@ -187,8 +208,9 @@
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Forms)" Text="FORMS">
 
                         </MudTabPanel>
+
                     </MudTabs>
-                </MudItem>
+                </MudPaper>
             </EndContent>
         </MudSplitter>
     </MudGrid>
@@ -203,7 +225,7 @@
     private List<AssetViewModel> rootAssets = new List<AssetViewModel>();
     private AssetViewModel selectedAsset;
     private List<AssetViewModel> currentPathList = new List<AssetViewModel>();
-    Client apiClient ;
+    Client apiClient;
 
     private string currentPath = string.Empty;
     string searchQuery;
@@ -241,7 +263,7 @@
 
     }
 
-    public bool HasChildren(AssetViewModel  assetViewModel)
+    public bool HasChildren(AssetViewModel assetViewModel)
     {
         if (assetViewModel != null && assetViewModel.Children.Count > 0) return true;
         return false;
@@ -294,45 +316,23 @@
         //TODO upload the files to the server
     }
 
-
-    private async void UploadFiles2(IBrowserFile file)
+    private async Task OnButtonClick(AssetDto asset)
     {
-        try
-        {
-            //add try catch to catch nocontent....
-            List<DocumentCategoryResponseDto> categoryDTOs = (List<DocumentCategoryResponseDto>)await apiClient.DocumentcategoriesAllAsync();
+        var args = new TableRowClickEventArgs<AssetDto> { Item = asset };
+        await OnRowClick(args);
+    }
 
-            if (categoryDTOs.Count == 0)
-            {
-                await apiClient.DocumentcategoriesPOSTAsync(new DocumentCategoryRequestDto() { Name = "Nice", Description = "very" });
-            }
-
-            files.Add(file);
-            DocumentRequestDto documentRequestDto = new DocumentRequestDto();
-            documentRequestDto.Name = "Test";
-            documentRequestDto.Description = "Test";
-            documentRequestDto.CategoryId = 1;
-
-
-            DocumentResponseDto documentResponseDto = await apiClient.DocumentsPOSTAsync(documentRequestDto);
-            Stream stream = file.OpenReadStream();
-            FileParameter fileParameter = new FileParameter(stream);
-
-            await apiClient.FilesAsync(documentResponseDto.Id, fileParameter);
-        }
-        catch (Exception ex)
-        {
-
-            throw;
-        }
+    public async Task OnRowClick(TableRowClickEventArgs<AssetDto> args)
+    {
+        //var tempassets = assets.Where(a => a.ParentId == args.Item.Id).ToList();
+        //var assetViewModels = new List<AssetViewModel>();
+        //assetViewModels.AddRange(tempassets.Select(a => new AssetViewModel() { Asset = a }));
 
 
         //TODO upload the files to the server
     }
 
-    public async Task OnRowClick(TableRowClickEventArgs<AssetDto> args)
-    {
-        if (rootAssets.Where(a=>a.Asset.Id == args.Item.Id).FirstOrDefault().Children.Count>0)
+        if (rootAssets.Where(a => a.Asset.Id == args.Item.Id).FirstOrDefault().Children.Count > 0)
         {
             var assetViewModels = assets.Select(a => new AssetViewModel { Asset = a }).ToList();
 
@@ -356,55 +356,17 @@
         StateHasChanged();
     }
 
-    private async Task SetCurrentPath()
-    {
-        try
-        {
-
-            if(rootAssets.Count > 0)
-            {
-                if (rootAssets.FirstOrDefault().Asset.ParentId != null)
-                {
-                    string tempCurrentPath = string.Empty;
-                    AssetDto tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, rootAssets.FirstOrDefault().Asset);
-                    if (tempAssetDto != null)
-                    {
-                        do
-                        {
-                            tempCurrentPath = tempAssetDto.Name + " | " + tempCurrentPath;
-                            tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, tempAssetDto);
-                        }
-                        while (tempAssetDto != null);
-
-                        currentPath = tempCurrentPath;
-                    }
-
-                }
-                else currentPath = "";
-                StateHasChanged();
-            }
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
-            if (ex.InnerException != null)
-            {
-                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
-            }
-        }
-    }
-
     private async Task GetAssetParent()
     {
         try
         {
             var parentId = rootAssets.FirstOrDefault()?.Asset.ParentId;
-            
+
 
             var assetViewModels = assets.Select(a => new AssetViewModel { Asset = a }).ToList();
             var parent = assetViewModels.Where(a => a.Asset.Id == parentId).FirstOrDefault();
 
-            if (parent != null) 
+            if (parent != null)
             {
                 var grandParentId = parent.Asset.ParentId;
 
@@ -440,7 +402,6 @@
     }
 
 
-
     private bool FilterFunc1(AssetDto AssetDto) => FilterFunc(AssetDto, searchString);
 
     private bool FilterFunc(AssetDto AssetDto, string searchString)
@@ -455,8 +416,76 @@
             return true;
         return false;
     }
-}
 
+
+    //--------------New Cyril-------------//
+
+    private List<string> GetPathSegments()
+    {
+        return currentPath.Split(new[] { " / " }, StringSplitOptions.RemoveEmptyEntries).ToList();
+    }
+
+    private async Task OnPathSegmentClick(string segment)
+    {
+        var segments = GetPathSegments();
+        var segmentIndex = segments.IndexOf(segment);
+        if (segmentIndex >= 0)
+        {
+            await NavigateToPathSegment(segmentIndex);
+        }
+    }
+
+    private async Task NavigateToPathSegment(int segmentIndex)
+    {
+        var segments = GetPathSegments();
+        string targetPath = string.Join(" / ", segments.Take(segmentIndex + 1));
+
+        var asset = assets.FirstOrDefault(a => a.Name == segments[segmentIndex]);
+        if (asset != null)
+        {
+            GetAssetParent();
+
+            await SetCurrentPath();
+            StateHasChanged();
+        }
+    }
+
+    private async Task SetCurrentPath()
+    {
+        try
+        {
+            if (rootAssets.Count > 0)
+            {
+                if (rootAssets.FirstOrDefault().Asset.ParentId != null)
+                {
+                    string tempCurrentPath = string.Empty;
+                    AssetDto tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, rootAssets.FirstOrDefault().Asset);
+                    if (tempAssetDto != null)
+                    {
+                        do
+                        {
+                            tempCurrentPath = tempAssetDto.Name + " / " + tempCurrentPath;
+                            tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, tempAssetDto);
+                        }
+                        while (tempAssetDto != null);
+
+                        currentPath = tempCurrentPath.TrimEnd(" / ".ToCharArray());
+                    }
+                }
+                else currentPath = "";
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
+            if (ex.InnerException != null)
+            {
+                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
+            }
+        }
+    }
+}
 
 <style>
     .mud-tabs .mud-tab.mud-tab-active {
@@ -480,3 +509,4 @@
     }
 </style>
 
+@* <div class="row" style="height:100%; width: 100%; padding: 10px; margin: 0;"><div> *@
