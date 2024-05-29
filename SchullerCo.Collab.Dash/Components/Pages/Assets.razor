@@ -8,7 +8,7 @@
 @using SchullerCo.Collab.Dash.Services
 @using SchullerCo.Collab.Dash.Models.Asset
 
-@inject HttpClient Http 
+@inject HttpClient Http
 
 <PageTitle>Assets</PageTitle>
 
@@ -18,46 +18,69 @@
         <MudItem xs="12">
             <MudText Typo="Typo.h4" GutterBottom="true">Assets</MudText>
             <MudSpacer />
-            <MudPaper Elevation="0" Style="@($"color:{Colors.Grey.Darken1};height: 40px; width: 100%; padding: 0px;")"  
-            Class="d-flex align-center"><MudText Typo="Typo.subtitle2">PATH: @currentPath</MudText></MudPaper>
+            <MudPaper Elevation="0" Style="@($"color:{Colors.Grey.Darken1}; height: 40px; width: 100%; padding: 0px; display: flex; align-items: center;")"
+                      Class="d-flex align-center">
+                <MudText Typo="Typo.subtitle2" Class="d-flex align-items-center">
+                    <div class="d-flex">
+                        @foreach (var segment in GetPathSegments())
+                        {
+                            <button type="button" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                                    class="btn btn-outline-primary btn-sm" @onclick="() => OnPathSegmentClick(segment)">
+                                @segment
+                            </button>
+                            @* <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="() => OnPathSegmentClick(segment)">
+                        @segment
+                        </MudButton> *@
+                            @if (segment != GetPathSegments().Last())
+                            {
+                                <MudText Typo="Typo.h6">-</MudText>
+                            }
+                        }
+                    </div>
+                </MudText>
+
+            </MudPaper>
+            @*   <MudPaper Class="d-flex flex-row flex-grow-1 gap-2" Elevation="0">
+            <MudItem>
+            <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.ArrowBack"
+            OnClick="@OnUpCLick" Color="Color.Primary"
+            Disabled="true">
+            BACK
+            </MudButton>
+            </MudItem>
+            <MudItem>
+            <MudButton Variant="Variant.Filled" Disabled="true"
+            StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.QrCode)" Color="Color.Primary">
+            QRCODE
+            </MudButton>
+            </MudItem>
+            </MudPaper> *@
         </MudItem>
 
-                        @* <div class="row" style="height:100%; width: 100%; padding: 10px; margin: 0;"><div> *@
         <MudSplitter ContentStyle="height: 100%;" OnDoubleClicked="@OnDoubleClicked" @bind-Dimension="@_percentage">
             <StartContent>
                 <MudPaper Elevation="0" Style="overflow-inline: auto; height: 100%; width: 100%; padding: 0px; margin: 5px;">
-                    @* <div class="row" style="height:100%; width: 100%; padding: 10px; margin: 0;"><div> *@
-                    <!-- Erste Zeile mit den Buttons -->
-                    <MudPaper Class="d-flex flex-row flex-grow-1 gap-1" Elevation="0">
-                            <MudItem>
-                                <MudButton Variant="Variant.Filled" DisableElevation="true" StartIcon="@Icons.Material.Filled.ArrowBack"
-                                           OnClick="@OnUpCLick" Color="Color.Primary">
-                                    BACK
-                                </MudButton>
-                             
-                            </MudItem>
-                            <MudItem>
-                                <MudButton Variant="Variant.Filled" Disabled="true" DisableElevation="true"
-                                           StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.QrCode)" Color="Color.Primary">
-                                    QRCODE
-                                </MudButton>
-                            </MudItem>
-                    </MudPaper>
-                  
-                    <!-- Zweite Zeile mit dem MudText -->
+
                     @if (!string.IsNullOrEmpty(errorMessage))
                     {
                         <MudText Color="Color.Error">@errorMessage</MudText>
                     }
                     else if (assets != null && assets.Any())
-                    { 
-                        <MudTable Items=@rootAssets.Select(a=>a.Asset) Hover="true" Striped="true"
+                    {
+                        <MudTable RowsPerPage="100" Items=@rootAssets.Select(a=>a.Asset) Hover="true" Striped="true"
                                   RowClass="cursor-pointer" T="AssetDto"
-                                  OnRowClick="OnRowClick" Filter="new Func<AssetDto,bool>(FilterFunc1)">
-
+                                  Filter="new Func<AssetDto,bool>(FilterFunc1)">
+                            @*  OnRowClick="OnRowClick" *@
                             <ToolBarContent>
                                 <MudSpacer />
                                 <div>
+
+                                  @*   <form class="d-flex" role="search">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-success" type="submit">Search</button>
+                                    </form> *@
+
                                     <MudTextField @bind-Value="searchString" Placeholder="Search"
                                                   Variant="Variant.Outlined" Margin="Margin.Dense"
                                                   Adornment="Adornment.Start"
@@ -70,9 +93,9 @@
 
                             <HeaderContent>
                                 <MudTh>
-                                    <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Id)">
-                                        Id
-                                    </MudTableSortLabel>
+                                    @*  <MudTableSortLabel SortBy="new Func<AssetDto, object>(x=>x.Id)">
+                                Id
+                                </MudTableSortLabel> *@
                                 </MudTh>
                                 <MudTh>
                                     <MudTableSortLabel InitialDirection="SortDirection.Ascending"
@@ -91,23 +114,24 @@
                                 @if (@HasChildren(rootAssets.Where(a => a.Asset.Id == context.Id).SingleOrDefault()))
                                 {
                                     <MudTd DataLabel="Id">
-                                        Children
+                                        @*<MudButton StartIcon="@SvgIconHelper.GetSvgIcon(SvgLib.Members)" Variant="Variant.Filled" OnClick="() => OnButtonClick(context)">Children</MudButton> *@
+                                        <button type="button" class="btn btn-primary btn-sm" @onclick="() => OnButtonClick(context)">Open</button>
                                     </MudTd>
                                 }
                                 else
                                 {
                                     <MudTd DataLabel="Id">
-                                        No Children
+
                                     </MudTd>
                                 }
-                                    <MudTd DataLabel="Name">@context.Name</MudTd>
-                                    <MudTd DataLabel="Position">@context.Description</MudTd>
-                                </RowTemplate>
+                                <MudTd DataLabel="Name">@context.Name</MudTd>
+                                <MudTd DataLabel="Position">@context.Description</MudTd>
+                            </RowTemplate>
 
-                                <PagerContent>
-                                    <MudTablePager />
-                                </PagerContent>
-                            </MudTable>
+                            <PagerContent>
+                                <MudTablePager />
+                            </PagerContent>
+                        </MudTable>
                     }
                     else
                     {
@@ -118,7 +142,7 @@
 
             <EndContent>
                 <MudPaper Elevation="0" Style="padding: 0px; margin: 5px;">
-                    <!-- Second column for the menu with tabs -->
+
                     <MudTabs PanelClass="mt-3" Elevation="1" Rounded="true"
                              Color="Color.Default">
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.ModelViewer)" Text="3D VIEWER">
@@ -136,7 +160,7 @@
                                             @context
                                         </MudTooltip>
                                     </TabWrapperContent>
-                                   
+
                                 </MudTabPanel>
 
                                 <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Bim)" Text="BIM">
@@ -148,7 +172,6 @@
                                             @context
                                         </MudTooltip>
                                     </TabWrapperContent>
-                                    
                                 </MudTabPanel>
                             </MudTabs>
                         </MudTabPanel>
@@ -193,15 +216,13 @@
     private string currentPath = string.Empty;
     AssetDtoExtension assetDtoExtension = new AssetDtoExtension();
 
-
-
     string searchQuery;
     IList<IBrowserFile> files = new List<IBrowserFile>();
     private ICollection<AssetDto> assets = new List<AssetDto>();
     private List<AssetViewModel> rootAssets = new List<AssetViewModel>();
     private AssetViewModel selectedAsset;
     private List<AssetViewModel> currentPathList = new List<AssetViewModel>();
-    Client apiClient ;
+    Client apiClient;
 
 
     protected override async Task OnInitializedAsync()
@@ -232,7 +253,7 @@
 
     }
 
-    public bool HasChildren(AssetViewModel  assetViewModel)
+    public bool HasChildren(AssetViewModel assetViewModel)
     {
         if (assetViewModel != null && assetViewModel.Children.Count > 0) return true;
         return false;
@@ -265,6 +286,12 @@
         //TODO upload the files to the server
     }
 
+    private async Task OnButtonClick(AssetDto asset)
+    {
+        var args = new TableRowClickEventArgs<AssetDto> { Item = asset };
+        await OnRowClick(args);
+    }
+
     public async Task OnRowClick(TableRowClickEventArgs<AssetDto> args)
     {
         //var tempassets = assets.Where(a => a.ParentId == args.Item.Id).ToList();
@@ -273,7 +300,7 @@
 
 
 
-        if (rootAssets.Where(a=>a.Asset.Id == args.Item.Id).FirstOrDefault().Children.Count>0)
+        if (rootAssets.Where(a => a.Asset.Id == args.Item.Id).FirstOrDefault().Children.Count > 0)
         {
             var assetViewModels = assets.Select(a => new AssetViewModel { Asset = a }).ToList();
 
@@ -298,76 +325,17 @@
         StateHasChanged();
     }
 
-    private async Task SetCurrentPath()
-    {
-        try
-        {
-
-            if(rootAssets.Count > 0)
-            {
-                if (rootAssets.FirstOrDefault().Asset.ParentId != null)
-                {
-                    string tempCurrentPath = string.Empty;
-                    AssetDto tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, rootAssets.FirstOrDefault().Asset);
-                    if (tempAssetDto != null)
-                    {
-                        do
-                        {
-                            tempCurrentPath = tempAssetDto.Name + " | " + tempCurrentPath;
-                            tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, tempAssetDto);
-                        }
-                        while (tempAssetDto != null);
-
-                        currentPath = tempCurrentPath;
-                    }
-
-                }
-                else currentPath = "";
-                StateHasChanged();
-            }
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
-            if (ex.InnerException != null)
-            {
-                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
-            }
-        }
-    }
-
-
-
-
-
-    private async Task GetAssets()
-    {
-        try
-        {
-            assetDtoExtension.AssetDtos = await ApiClientService.GetAssets();
-            StateHasChanged();
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
-            if (ex.InnerException != null)
-            {
-                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
-            }
-        }
-    }
-
     private async Task GetAssetParent()
     {
         try
         {
             var parentId = rootAssets.FirstOrDefault()?.Asset.ParentId;
-            
+
 
             var assetViewModels = assets.Select(a => new AssetViewModel { Asset = a }).ToList();
             var parent = assetViewModels.Where(a => a.Asset.Id == parentId).FirstOrDefault();
 
-            if (parent != null) 
+            if (parent != null)
             {
                 var grandParentId = parent.Asset.ParentId;
 
@@ -402,46 +370,6 @@
         }
     }
 
-    private async Task GetAssetParent1()
-    {
-        try
-        {
-            var parentId = rootAssets.FirstOrDefault()?.Asset.ParentId;
-            var parent = assets.Where(a => a.Id == parentId);
-            if (parent.Count() > 0)
-            {
-                var grandParentId = parent.FirstOrDefault<AssetDto>().ParentId;
-
-                if (parentId != null)
-                {
-                    var tempassets = assets.Where(a => a.ParentId == grandParentId).ToList();
-                    var assetViewModels = tempassets.Select(a => new AssetViewModel() { Asset = a }).ToList();
-
-
-
-                    if (assetViewModels.Count != 0)
-                    {
-                        rootAssets = assetViewModels;
-                        foreach (var rootAsset in assetViewModels)
-                        {
-                            SetChildren(rootAsset, assetViewModels);
-                        }
-                    }
-                }
-            }
-
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
-            if (ex.InnerException != null)
-            {
-                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
-            }
-        }
-    }
-
-
 
     private bool FilterFunc1(AssetDto AssetDto) => FilterFunc(AssetDto, searchString);
 
@@ -459,7 +387,73 @@
     }
 
 
- 
+    //--------------New Cyril-------------//
+
+    private List<string> GetPathSegments()
+    {
+        return currentPath.Split(new[] { " / " }, StringSplitOptions.RemoveEmptyEntries).ToList();
+    }
+
+    private async Task OnPathSegmentClick(string segment)
+    {
+        var segments = GetPathSegments();
+        var segmentIndex = segments.IndexOf(segment);
+        if (segmentIndex >= 0)
+        {
+            await NavigateToPathSegment(segmentIndex);
+        }
+    }
+
+    private async Task NavigateToPathSegment(int segmentIndex)
+    {
+        var segments = GetPathSegments();
+        string targetPath = string.Join(" / ", segments.Take(segmentIndex + 1));
+
+        var asset = assets.FirstOrDefault(a => a.Name == segments[segmentIndex]);
+        if (asset != null)
+        {
+            GetAssetParent();
+
+            await SetCurrentPath();
+            StateHasChanged();
+        }
+    }
+
+    private async Task SetCurrentPath()
+    {
+        try
+        {
+            if (rootAssets.Count > 0)
+            {
+                if (rootAssets.FirstOrDefault().Asset.ParentId != null)
+                {
+                    string tempCurrentPath = string.Empty;
+                    AssetDto tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, rootAssets.FirstOrDefault().Asset);
+                    if (tempAssetDto != null)
+                    {
+                        do
+                        {
+                            tempCurrentPath = tempAssetDto.Name + " / " + tempCurrentPath;
+                            tempAssetDto = rootAssets.FirstOrDefault().GetParentAsset(assets, tempAssetDto);
+                        }
+                        while (tempAssetDto != null);
+
+                        currentPath = tempCurrentPath.TrimEnd(" / ".ToCharArray());
+                    }
+                }
+                else currentPath = "";
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
+            if (ex.InnerException != null)
+            {
+                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
+            }
+        }
+    }
 }
 
 <style>
@@ -484,3 +478,4 @@
     }
 </style>
 
+@* <div class="row" style="height:100%; width: 100%; padding: 10px; margin: 0;"><div> *@

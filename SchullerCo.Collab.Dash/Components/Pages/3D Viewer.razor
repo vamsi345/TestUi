@@ -24,7 +24,8 @@
                              Class="my-6 mx-3" Color="Color.Default">
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.DataBase)" Text="DATA">
                             <MudTabs Rounded="true">
-                                <MudTabPanel>
+
+                                <MudTabPanel Style="" Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Aveva)" Text="AVEVA">
                                     <ChildContent>
                                         <MudText>Custom tab content only</MudText>
                                     </ChildContent>
@@ -33,12 +34,10 @@
                                             @context
                                         </MudTooltip>
                                     </TabWrapperContent>
-                                    <TabContent>
-                                        <MudText Typo="Typo.button">AVEVA DATA</MudText>
-                                    </TabContent>
+
                                 </MudTabPanel>
 
-                                <MudTabPanel>
+                                <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Bim)" Text="BIM">
                                     <ChildContent>
                                         <MudText>Both custom tab and wrapper content</MudText>
                                     </ChildContent>
@@ -47,10 +46,8 @@
                                             @context
                                         </MudTooltip>
                                     </TabWrapperContent>
-                                    <TabContent>
-                                        <MudText Typo="Typo.button">SPECKLE DATA</MudText>
-                                    </TabContent>
                                 </MudTabPanel>
+
                             </MudTabs>
                         </MudTabPanel>
                         <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Documents)" Text="DOCUMENTS">
