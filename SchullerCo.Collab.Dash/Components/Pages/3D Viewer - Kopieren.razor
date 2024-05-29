@@ -1,0 +1,119 @@
+﻿@page "/3dviewer_kopieren"
+
+@using SchullerCo.Collab.Dash.Models.CustomIcons
+@using SchullerCo.Collab.Dash.SvgIcons
+@using MudExtensions
+
+
+<PageTitle>3DViewer</PageTitle>
+
+
+<MudContainer Class="mt-16 d-flex" MaxWidth="MaxWidth.False">
+    <MudGrid>
+        <MudItem xs="12">
+            <MudSplitter OnDoubleClicked="@OnDoubleClicked"
+                         @bind-Dimension="@_percentage">
+                <StartContent>
+                    <MudText Class="my-6" Typo="Typo.h3">Here comes speckle view.</MudText>
+                    <!-- First column for 3D shapes, twice as wide as the second column -->
+                    @*   <SpeckleViewer Class="flex-grow-2" /> Centered="true" *@
+                </StartContent>
+
+                <EndContent>
+                    <MudTabs PanelClass="mt-6" Elevation="1" Rounded="true"
+                             Class="my-6 mx-3" Color="Color.Default">
+                        <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.DataBase)" Text="DATA">
+                            <MudTabs Rounded="true">
+                                <MudTabPanel>
+                                    <ChildContent>
+                                        <MudText>Custom tab content only</MudText>
+                                    </ChildContent>
+                                    <TabWrapperContent>
+                                        <MudTooltip Text="ToolTip Two">
+                                            @context
+                                        </MudTooltip>
+                                    </TabWrapperContent>
+                                    <TabContent>
+                                        <MudText Typo="Typo.button">AVEVA DATA</MudText>
+                                    </TabContent>
+                                </MudTabPanel>
+
+                                <MudTabPanel>
+                                    <ChildContent>
+                                        <MudText>Both custom tab and wrapper content</MudText>
+                                    </ChildContent>
+                                    <TabWrapperContent>
+                                        <MudTooltip Text="ToolTip Two">
+                                            @context
+                                        </MudTooltip>
+                                    </TabWrapperContent>
+                                    <TabContent>
+                                        <MudText Typo="Typo.button">SPECKLE DATA</MudText>
+                                    </TabContent>
+                                </MudTabPanel>
+                            </MudTabs>
+                        </MudTabPanel>
+                        <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Documents)" Text="DOCUMENTS">
+                            <MudGrid>
+                                <MudItem xs="12" Class="d-flex justify-end">
+                                    <MudFileUpload T="IBrowserFile" FilesChanged="UploadFiles">
+                                        <ButtonTemplate>
+                                            <MudButton HtmlTag="label"
+                                                       Color="Color.Primary"
+                                                       StartIcon="@Icons.Material.Filled.CloudUpload"
+                                                       for="@context.Id">
+                                                UPLOAD FILES
+                                            </MudButton>
+                                        </ButtonTemplate>
+                                    </MudFileUpload>
+                                </MudItem>
+                            </MudGrid>
+                        </MudTabPanel>
+                        <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Forms)" Text="FORMS">
+
+                        </MudTabPanel>
+                        <MudTabPanel Icon="@SvgIconHelper.GetSvgIcon(SvgLib.Status)" Text="STATUS" BadgeDot="true" BadgeColor="Color.Error">
+
+                        </MudTabPanel>
+                    </MudTabs>
+                </EndContent>
+            </MudSplitter>
+        </MudItem>
+    </MudGrid>
+
+</MudContainer>
+
+
+@code {
+    double _percentage = 50;
+
+    private Task OnDoubleClicked()
+    {
+        if (true)
+        {
+            _percentage = 50;
+        }
+
+        return Task.CompletedTask;
+    }
+
+    IList<IBrowserFile> files = new List<IBrowserFile>();
+    private void UploadFiles(IBrowserFile file)
+    {
+        files.Add(file);
+        //TODO upload the files to the server
+    }
+}
+
+<style>
+    .mud-tabs .mud-tab.mud-tab-active {
+        color: #295093 !important; /* Textfarbe des aktiven Tabs */
+        background-color: rgba(128, 128, 128, 0.2) !important; /* Hintergrundfarbe des aktiven Tabs */
+    }
+
+    .mud-tabs .mud-tab:hover {
+        color: #295093 !important; /* Textfarbe des Tabs beim Hover */
+        background-color: rgba(128, 128, 128, 0.2) /* Hintergrundfarbe des Tabs beim Hover */
+    }
+</style>
+
