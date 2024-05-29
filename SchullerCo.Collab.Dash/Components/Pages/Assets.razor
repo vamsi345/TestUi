@@ -169,6 +169,17 @@
                                             </MudButton>
                                         </ButtonTemplate>
                                     </MudFileUpload>
+                                    <MudFileUpload T="IBrowserFile"  FilesChanged="UploadFiles2" MaximumFileCount="100">
+                                        <ButtonTemplate>
+                                            <MudButton HtmlTag="label"
+                                                       Variant="Variant.Filled"
+                                                       Color="Color.Primary"
+                                                       StartIcon="@Icons.Material.Filled.CloudUpload"
+                                                       for="@context.Id">
+                                                Only image files
+                                            </MudButton>
+                                        </ButtonTemplate>
+                                    </MudFileUpload>
                                 </MudItem>
                             </MudGrid>
                         </MudTabPanel>
@@ -186,22 +197,20 @@
 
 @code {
 
-    double _percentage = 50;
-    string errorMessage = string.Empty;
-    private string searchString = "";
 
-    private string currentPath = string.Empty;
-    AssetDtoExtension assetDtoExtension = new AssetDtoExtension();
-
-
-
-    string searchQuery;
     IList<IBrowserFile> files = new List<IBrowserFile>();
     private ICollection<AssetDto> assets = new List<AssetDto>();
     private List<AssetViewModel> rootAssets = new List<AssetViewModel>();
     private AssetViewModel selectedAsset;
     private List<AssetViewModel> currentPathList = new List<AssetViewModel>();
     Client apiClient ;
+
+    private string currentPath = string.Empty;
+    string searchQuery;
+    double _percentage = 50;
+    string errorMessage = string.Empty;
+    private string searchString = "";
+
 
 
     protected override async Task OnInitializedAsync()
@@ -259,20 +268,70 @@
         return Task.CompletedTask;
     }
 
-    private void UploadFiles(IBrowserFile file)
+    private async void UploadFiles(IBrowserFile file)
     {
-        files.Add(file);
+        try
+        {
+            files.Add(file);
+            DocumentRequestDto documentRequestDto = new DocumentRequestDto();
+            documentRequestDto.Name = "Test";
+            documentRequestDto.Description = "Test";
+
+
+            DocumentResponseDto documentResponseDto = await apiClient.DocumentsPOSTAsync(documentRequestDto);
+            Stream stream = file.OpenReadStream();
+            FileParameter fileParameter = new FileParameter(stream);
+
+            await apiClient.FilesAsync(documentResponseDto.Id, fileParameter);
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
+
+
+        //TODO upload the files to the server
+    }
+
+
+    private async void UploadFiles2(IBrowserFile file)
+    {
+        try
+        {
+            //add try catch to catch nocontent....
+            List<DocumentCategoryResponseDto> categoryDTOs = (List<DocumentCategoryResponseDto>)await apiClient.DocumentcategoriesAllAsync();
+
+            if (categoryDTOs.Count == 0)
+            {
+                await apiClient.DocumentcategoriesPOSTAsync(new DocumentCategoryRequestDto() { Name = "Nice", Description = "very" });
+            }
+
+            files.Add(file);
+            DocumentRequestDto documentRequestDto = new DocumentRequestDto();
+            documentRequestDto.Name = "Test";
+            documentRequestDto.Description = "Test";
+            documentRequestDto.CategoryId = 1;
+
+
+            DocumentResponseDto documentResponseDto = await apiClient.DocumentsPOSTAsync(documentRequestDto);
+            Stream stream = file.OpenReadStream();
+            FileParameter fileParameter = new FileParameter(stream);
+
+            await apiClient.FilesAsync(documentResponseDto.Id, fileParameter);
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
+
+
         //TODO upload the files to the server
     }
 
     public async Task OnRowClick(TableRowClickEventArgs<AssetDto> args)
     {
-        //var tempassets = assets.Where(a => a.ParentId == args.Item.Id).ToList();
-        //var assetViewModels = new List<AssetViewModel>();
-        //assetViewModels.AddRange(tempassets.Select(a => new AssetViewModel() { Asset = a }));
-
-
-
         if (rootAssets.Where(a=>a.Asset.Id == args.Item.Id).FirstOrDefault().Children.Count>0)
         {
             var assetViewModels = assets.Select(a => new AssetViewModel { Asset = a }).ToList();
@@ -288,7 +347,6 @@
             await SetCurrentPath();
             StateHasChanged();
         }
-
     }
 
     public async Task OnUpCLick(MouseEventArgs args)
@@ -336,27 +394,6 @@
         }
     }
 
-
-
-
-
-    private async Task GetAssets()
-    {
-        try
-        {
-            assetDtoExtension.AssetDtos = await ApiClientService.GetAssets();
-            StateHasChanged();
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
-            if (ex.InnerException != null)
-            {
-                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
-            }
-        }
-    }
-
     private async Task GetAssetParent()
     {
         try
@@ -384,45 +421,6 @@
                     {
                         rootAssets = assetViewModels.Where(a => a.Asset.ParentId == grandParentId).ToList();
                         foreach (var rootAsset in rootAssets)
-                        {
-                            SetChildren(rootAsset, assetViewModels);
-                        }
-                    }
-                }
-            }
-
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Fehler beim Abrufen der Daten: {ex.Message}";
-            if (ex.InnerException != null)
-            {
-                errorMessage += $" Inner Exception: {ex.InnerException.Message}";
-            }
-        }
-    }
-
-    private async Task GetAssetParent1()
-    {
-        try
-        {
-            var parentId = rootAssets.FirstOrDefault()?.Asset.ParentId;
-            var parent = assets.Where(a => a.Id == parentId);
-            if (parent.Count() > 0)
-            {
-                var grandParentId = parent.FirstOrDefault<AssetDto>().ParentId;
-
-                if (parentId != null)
-                {
-                    var tempassets = assets.Where(a => a.ParentId == grandParentId).ToList();
-                    var assetViewModels = tempassets.Select(a => new AssetViewModel() { Asset = a }).ToList();
-
-
-
-                    if (assetViewModels.Count != 0)
-                    {
-                        rootAssets = assetViewModels;
-                        foreach (var rootAsset in assetViewModels)
                         {
                             SetChildren(rootAsset, assetViewModels);
                         }

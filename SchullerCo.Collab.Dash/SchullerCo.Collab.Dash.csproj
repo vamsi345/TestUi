@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -10,6 +10,8 @@
     <PackageReference Include="CodeBeam.MudBlazor.Extensions" Version="6.9.2" />
     <PackageReference Include="MudBlazor" Version="6.19.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Speckle.Core" Version="2.19.0" />
+    <PackageReference Include="Speckle.Objects" Version="2.19.0" />
   </ItemGroup>
 
   <ItemGroup>

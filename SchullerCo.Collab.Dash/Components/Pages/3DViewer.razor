@@ -1,0 +1,65 @@
+﻿@page "/3dviewer"
+
+@using SchullerCo.Collab.Dash.Models.CustomIcons
+@using SchullerCo.Collab.Dash.SvgIcons
+@using MudExtensions
+
+
+<PageTitle>3DViewer</PageTitle>
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <input for="streamId" type="hidden" id="streamId" name="streamId" value=@StreamId class="form-control" />
+                    <input for="objectId" type="hidden" id="objectId" name="objectId" value=@ObjectId class="form-control" />
+                    <button type="button" id="loadModelButton" class="btn btn-primary mr-2">Load Model</button>
+                    <button type="button" id="isolateObjectsButton" class="btn btn-secondary mr-2">Isolate Selected Objects</button>
+                    <button type="button" id="unisolateObjectsButton" class="btn btn-secondary">Unisolate Objects</button>
+                    <button type="button" id="unisolateObjectsButton" class="btn btn-secondary">Unisolate Objects</button>
+
+                </form>
+            </div>
+            <div class="col-md-6" style="display:none">
+                <label for="tagInput">Enter Tag:</label>
+                <div class="input-group mb-3">
+                    <input type="text" id="tagInput" class="form-control" placeholder="Enter Tag">
+                    <div class="input-group-append">
+                        <button type="button" id="selectHighlightButton" class="btn btn-outline-secondary">Select & Highlight</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div id="renderer" style="width: 100%; height: 600px; background-color: #f0f0f0;"></div>
+            </div>
+        </div>
+    </div>
+
+<script src="/js/bundle.js"></script>
+<script language="Javascript">
+    var buttonClick = document.getElementById("loadModelButton");
+    console.log(buttonClick);
+    //document.querySelector('btn btn-primary mr-2').click();
+    buttonClick.click();
+    alert("irgendwas1");
+    //loadModel("8edcef18d9", "b78b281d5ca90c2bd8dee6b191d3f943");
+    alert("irgendwas");
+</script>
+
+
+
+@code {
+
+
+
+    string StreamId = "8edcef18d9";
+    string ObjectId = "b78b281d5ca90c2bd8dee6b191d3f943";
+
+
+
+}
+
+
