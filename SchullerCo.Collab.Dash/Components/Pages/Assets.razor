@@ -316,6 +316,41 @@
         //TODO upload the files to the server
     }
 
+    private async void UploadFiles2(IBrowserFile file)
+    {
+        try
+        {
+            //add try catch to catch nocontent....
+            List<DocumentCategoryResponseDto> categoryDTOs = (List<DocumentCategoryResponseDto>)await apiClient.DocumentcategoriesAllAsync();
+
+            if (categoryDTOs.Count == 0)
+            {
+                await apiClient.DocumentcategoriesPOSTAsync(new DocumentCategoryRequestDto() { Name = "Nice", Description = "very" });
+            }
+
+            files.Add(file);
+            DocumentRequestDto documentRequestDto = new DocumentRequestDto();
+            documentRequestDto.Name = "Test";
+            documentRequestDto.Description = "Test";
+            documentRequestDto.CategoryId = 1;
+
+
+            DocumentResponseDto documentResponseDto = await apiClient.DocumentsPOSTAsync(documentRequestDto);
+            Stream stream = file.OpenReadStream();
+            FileParameter fileParameter = new FileParameter(stream);
+
+            await apiClient.FilesAsync(documentResponseDto.Id, fileParameter);
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
+
+
+        //TODO upload the files to the server
+    }
+
     private async Task OnButtonClick(AssetDto asset)
     {
         var args = new TableRowClickEventArgs<AssetDto> { Item = asset };
@@ -329,8 +364,6 @@
         //assetViewModels.AddRange(tempassets.Select(a => new AssetViewModel() { Asset = a }));
 
 
-        //TODO upload the files to the server
-    }
 
         if (rootAssets.Where(a => a.Asset.Id == args.Item.Id).FirstOrDefault().Children.Count > 0)
         {
@@ -347,6 +380,7 @@
             await SetCurrentPath();
             StateHasChanged();
         }
+
     }
 
     public async Task OnUpCLick(MouseEventArgs args)
